@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1098911923924",
+    "project_id": "studentassistant-702c0",
+    "storage_bucket": "studentassistant-702c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098911923924:android:0b2255b53b543b94b14541",
+        "android_client_info": {
+          "package_name": "com.student"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098911923924-f00iignh5hvvvishkp8a9jlnlg04uma0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtWRt7N5z1AYA6kQktPPsXUpTwQy5QRxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098911923924-f00iignh5hvvvishkp8a9jlnlg04uma0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098911923924:android:e08ea84ca4205e6cb14541",
+        "android_client_info": {
+          "package_name": "com.studentassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098911923924-f00iignh5hvvvishkp8a9jlnlg04uma0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtWRt7N5z1AYA6kQktPPsXUpTwQy5QRxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098911923924-f00iignh5hvvvishkp8a9jlnlg04uma0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
