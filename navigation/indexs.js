@@ -5,9 +5,10 @@ import Routes from './Routes';
 
 const Providers = () => {
   return (
-    <AuthProvider>
-      <Routes/>
-    </AuthProvider>
+    <Routes/>
+    // <AuthProvider>
+    //   <Routes/>
+    // </AuthProvider>
   );
 }
 
