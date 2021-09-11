@@ -1,15 +1,19 @@
-import React,{useState} from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
-import {windowHeight, windowWidth} from '../asset/utils/Dimentions';
-import FormInput from '../asset/components/Forminput';
+import React, { useContext, useState } from 'react';
+import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import FormButton from '../asset/components/FormButton';
+import FormButton1 from '../asset/components/FormButton1';
+import FormInput from '../asset/components/Forminput';
 import SocialButton from '../asset/components/SocialButton';
+import { windowHeight, windowWidth } from '../asset/utils/Dimentions';
+import { AuthContext } from '../navigation/AuthProvider';
 
 
 const SignupScreen=({navigation}) =>{
   const[email,setEmail]=useState();
   const[password,setPassword]=useState();
-  const[confirmpassword,setonfirmPassword]=useState();
+  const[confirmpassword,setconfirmPassword]=useState();
+
+  const { register } = useContext(AuthContext);
 
     return(
         <View style={styles1.container}>
@@ -41,17 +45,14 @@ const SignupScreen=({navigation}) =>{
 
 
             <FormButton
-            buttonTitle="Create Account"
-            onPress={() => alert("Sign In Clicked")}
+            buttonTitle="Sign Up"
+            onPress={() => register(email, password)}
             /> 
 
             <Text>   </Text>
 
-            <Button
-            style={styles1.Button}
-            title="Have an Account"
-            color="#6e3b6e"
-            borderRadius="20" 
+            <FormButton1
+            buttonTitle="Have an Account" 
             onPress={()=> navigation.navigate("Login")}
             /> 
 
