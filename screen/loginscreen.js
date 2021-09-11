@@ -1,13 +1,16 @@
 //import { styles } from 'ansi-colors';
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import FormInput from '../asset/components/Forminput';
 import FormButton from '../asset/components/FormButton';
 import SocialButton from '../asset/components/SocialButton';
+import { AuthContext } from '../navigation/AuthProvider';
 
 const Loginscreen=({navigation}) =>{
   const[email,setEmail]=useState();
   const[password,setPassword]=useState();
+
+  const {login} = useContext(AuthContext);
 
     return(
         <View style={styles1.container}>
@@ -30,7 +33,7 @@ const Loginscreen=({navigation}) =>{
 
             <FormButton
             buttonTitle="Sign In"
-            onPress={() => alert("Sign In Clicked")}
+            onPress={() => login(email, password)}
             /> 
 
             <TouchableOpacity
