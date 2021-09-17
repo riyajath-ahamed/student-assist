@@ -1,0 +1,1 @@
+{"version":3,"sources":["Pager.tsx"],"names":[],"mappings":";;;;;;;;;;;;AAAA","sourcesContent":["export { default } from './PanResponderAdapter';\n"]}
