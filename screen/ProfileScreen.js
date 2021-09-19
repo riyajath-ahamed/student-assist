@@ -1,20 +1,21 @@
 import React, {useContext} from "react";
 import {View, Text, StyleSheet } from 'react-native';
 
-
+import FormButton from "../asset/components/FormButton";
 import { AuthContext } from "../navigation/AuthProvider";
 
-const HomeScreen =() => {
+const ProfileScreen =() => {
     const {user, logout}= useContext(AuthContext);
 
     return(
         <View style={Styles.container} > 
-        <Text> Welcome{"\n"} {user.uid} </Text>
+        <Text> Welcome {user.uid} </Text>
+        <FormButton buttonTitle='Logout' onPress={() => logout ()} />
         </View>
     );
 }
 
-export default HomeScreen;
+export default ProfileScreen;
 
 const Styles = StyleSheet.create({
     container:{
@@ -26,7 +27,6 @@ const Styles = StyleSheet.create({
     },
     text: {
         fontSize:20,
-        color: '#333333',
-        fontWeight: 'bold'
+        color: '#333333'
     }
 })
