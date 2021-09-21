@@ -61,7 +61,7 @@ const FeedStack =({navigation}) =>(
           <View style={{marginRight: 10}}>
             <MaterialCommunityIcons.Button
               iconStyle="album"
-              size={22}
+              size={20}
               backgroundColor="#7F3DFF"
               color="#7F3DFF"
               onPress={() => navigation.navigate('AddPost')}
@@ -83,15 +83,14 @@ const FeedStack =({navigation}) =>(
         },
         headerBackTitleVisible: false,
         headerBackImage: () => (
-          <View style={{marginLeft: 15}}>
+          <View style={{marginLeft: 5}}>
             <Image
-              source={require('../screen/Icons/Vector.png')}
+              source={require('../screen/Icons/arrowleft.png')}
               
               resizeMode="contain"
               style={{
-                width: 40,
-                height: 40,
-                tintColor:focused ? '#7F3DFF': '#748c94'
+                width: 20,
+                height: 20,
               }}
               />
           </View>
