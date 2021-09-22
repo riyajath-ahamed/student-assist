@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import FormButton from '../asset/components/FormButton';
 import FormButton1 from '../asset/components/FormButton1';
 import FormInput from '../asset/components/Forminput';
@@ -14,6 +14,9 @@ const SignupScreen=({navigation}) =>{
   const[confirmpassword,setconfirmPassword]=useState();
 
   const { register } = useContext(AuthContext);
+
+    
+    
 
     return(
         <View style={styles1.container}>
@@ -35,13 +38,22 @@ const SignupScreen=({navigation}) =>{
             secureTextEntry={true}
             />
             
+
+
             <FormInput 
             labelValue={confirmpassword}
-            onChangeText={(userPassword)=>setPassword(userPassword)}
+            onChangeText={(userPassword)=>setconfirmPassword(userPassword)}
             placeholderText="Confirm Password"
             secureTextEntry={true}
-            />
-             
+            /> 
+            
+            {
+              register ? password !== confirmpassword :
+                    alert("Passwords don't match.")
+            }
+
+          
+     
 
 
             <FormButton
@@ -55,23 +67,6 @@ const SignupScreen=({navigation}) =>{
             buttonTitle="Have an Account" 
             onPress={()=> navigation.navigate("Login")}
             /> 
-
-            {/* <TouchableOpacity
-            style={styles1.forgotButton}
-            onPress={()=> {}}>
-              <Text style={styles1.navButtonText}>
-                Forgot Password?
-              </Text>
-            </TouchableOpacity> */}
-
-            {/* <TouchableOpacity
-            style={styles1.forgotButton}
-            onPress={()=> navigation.navigate('Signup')}
-            >
-              <Text style={styles1.navButtonText}>
-                Dont have an account? Create here.
-              </Text>
-            </TouchableOpacity> */}
 
             
 

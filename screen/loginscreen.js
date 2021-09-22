@@ -1,20 +1,29 @@
-//import { styles } from 'ansi-colors';
+
 import React,{useContext, useState} from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import FormInput from '../asset/components/Forminput';
 import FormButton from '../asset/components/FormButton';
 import SocialButton from '../asset/components/SocialButton';
+
 import { AuthContext } from '../navigation/AuthProvider';
+
+
+
+import { Image } from 'react-native-svg';
+import { isContinueStatement } from '@babel/types';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Loginscreen=({navigation}) =>{
   const[email,setEmail]=useState();
   const[password,setPassword]=useState();
+  const[emailError,setemailError]=useState();
 
   const {login} = useContext(AuthContext);
+  const test=email;
 
     return(
         <View style={styles1.container}>
-            <Text style={styles1.Text}>Student Assist</Text>
+            <Text style={styles1.Text}>Student Assist</Text>        
             <FormInput 
             labelValue={email}
             onChangeText={(userEmail)=>setEmail(userEmail)}
@@ -23,18 +32,36 @@ const Loginscreen=({navigation}) =>{
             autoCapitalize="none"
             autoCorrect={false}
             />
+              
+          
+            
+            {
+              email ? null && test.includes :
+              <Text style={styles1.errorMsg}>Enter A Valid Email</Text>
+            }
+            
 
             <FormInput 
             labelValue={password}
             onChangeText={(userPassword)=>setPassword(userPassword)}
             placeholderText="Password"
+            autoCapitalize="none"
             secureTextEntry={true}
             />
 
+            {
+              password ? null && test.includes :
+              <Text style={styles1.errorMsg}>Enter A Valid Password</Text>
+            }     
+
+            
             <FormButton
+            disabled= {false}
             buttonTitle="Sign In"
             onPress={() => login(email, password)}
-            /> 
+            />
+          
+        
 
             <TouchableOpacity
             style={styles1.forgotButton}
@@ -52,6 +79,7 @@ const Loginscreen=({navigation}) =>{
                 Dont have an account? Create here.
               </Text>
             </TouchableOpacity>
+          
 
             
 
@@ -92,5 +120,9 @@ const styles1 = StyleSheet.create({
       fontWeight: '500',
       color: '#2e64e5',
       fontFamily: 'Lato-Regular',
+    },
+    errorMsg: {
+      color: '#FF0000',
+      fontSize: 15,
     },
   });

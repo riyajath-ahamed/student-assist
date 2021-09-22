@@ -30,8 +30,8 @@ const CustomTabBarButton =({children, onPress}) => (
     style={{
       width:60,
       height:60,
-      borderRadius: 35,
-      backgroundColor:'#7F3DFF'
+      borderRadius: 40 ,
+      backgroundColor:'#D6C8F1'
     }}
     > 
       {children}
