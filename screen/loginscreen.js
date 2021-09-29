@@ -1,6 +1,6 @@
 
 import React,{useContext, useState} from 'react';
-import { View, Text, Button, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity, Alert, Image} from 'react-native';
 import FormInput from '../asset/components/Forminput';
 import FormButton from '../asset/components/FormButton';
 import SocialButton from '../asset/components/SocialButton';
@@ -9,7 +9,7 @@ import { AuthContext } from '../navigation/AuthProvider';
 
 
 
-import { Image } from 'react-native-svg';
+//import { Image } from 'react-native-svg';
 import { isContinueStatement } from '@babel/types';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -23,6 +23,11 @@ const Loginscreen=({navigation}) =>{
 
     return(
         <View style={styles1.container}>
+          <Image
+            source={require('../asset/img/Logo.jpeg')}
+            style={styles1.logo}
+              />
+
             <Text style={styles1.Text}>Student Assist</Text>        
             <FormInput 
             labelValue={email}
@@ -123,6 +128,7 @@ const styles1 = StyleSheet.create({
     },
     errorMsg: {
       color: '#FF0000',
-      fontSize: 15,
+      fontSize: 10,
+      marginRight: 200
     },
   });
