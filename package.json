@@ -25,6 +25,7 @@
     "@react-navigation/stack": "^6.0.7",
     "react": "17.0.2",
     "react-native": "0.65.1",
+    "react-native-action-button": "^2.8.5",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-pager-view": "^5.4.1",

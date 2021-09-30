@@ -17,6 +17,7 @@ export const Card = styled.View`
 export const UserInfo = styled.View`
     flex-direction: row;
     justify-content: flex-start;
+    padding: 10px;
 `;
 
 export const UserImg = styled.Image`
@@ -78,7 +79,7 @@ export const InteractionText = styled.Text`
     font-size: 12px;
     font-family: 'Lato-Regular';
     font-weight: bold;
-    color: ${props => props.active ? '#2e64e5' : '#333'};
+    color: ${props => props.active ? '#7F3DFF' : '#333'};
     margin-top: 5px;
     margin-left: 5px;
 `;

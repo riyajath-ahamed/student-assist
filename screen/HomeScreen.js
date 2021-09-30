@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {View, Text, StyleSheet, Image, } from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList } from 'react-native';
 
 //import{Card, Container} from '/Programming/Student/styles/FeedStyles'
 
@@ -7,61 +7,58 @@ import {View, Text, StyleSheet, Image, } from 'react-native';
 import { AuthContext } from "../navigation/AuthProvider";
 
 import PostCard from "../asset/components/PostCard";
-import { Card, Container,  UserInfo, UserImg, UserName, UserInfoText, PostTime, PostText, PostImg, InteractionWrapper, Interaction, Divider, InteractionText } from "../styles/FeedStyles";
+import {Container} from "../styles/FeedStyles";
+
+const Posts = [
+    {
+        id: '1',
+        userName: 'Kavindu Dilshan',
+        userImg: require('../asset/user/user1.jpeg'),
+        postTime: '1 mins ago',
+        post:
+          'Hey there, The general meeting is happening now in Audiroium !!!',
+        postImg: require('../asset/Post/post1.jpg'),
+        liked: true,
+        likes: '14',
+        comments: '5', 
+    },
+    {
+        id: '2',
+        userName: 'Kalana Perera',
+        userImg: require('../asset/user/user2.jpeg'),
+        postTime: '5 mins ago',
+        post:
+          'Hey there, The general meeting is happening now in Audiroium !!!',
+        postImg: require('../asset/Post/post1.jpg'),
+        liked: false,
+        likes: '31',
+        comments: '15', 
+    },
+    {
+        id: '4',
+        userName: 'Riyajath Ahamed',
+        userImg: require('../asset/user/user4.jpeg'),
+        postTime: '45 mins ago',
+        post:
+          'Hey there welcom to the new assistant app "Student Assist!!!"',
+        postImg: 'none',
+        liked: false,
+        likes: '5',
+        comments: '0', 
+    },
+]
 
 const HomeScreen =() => {
     const {user, logout}= useContext(AuthContext);
 
     return(
         <Container>
-           
-            <Card>
-                <UserInfo>
-                    <UserImg source={require('../asset/user/user1.jpeg')} /> 
-                    <UserInfoText>
-                    <UserName>Dilshan</UserName>
-                    <PostTime>4 Hours ago</PostTime>
-                    </UserInfoText>
-                </UserInfo>
-                <PostText>
-                    There will be a Meeting In our Auditorim
-                </PostText>
-                <PostImg source={require('../asset/Post/post1.jpg')} />
-                <InteractionWrapper>
-                    <Interaction active >
-                        <Image source={require('../asset/Icon/thumbs.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
-                        <InteractionText active > 12 Noted</InteractionText>
-                    </Interaction>
-                    <Interaction>
-                        <Image source={require('../asset/Icon/comment.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
-                        <Text> Comment</Text>
-                    </Interaction>
-                </InteractionWrapper>
-            </Card>
-
-            <Card>
-                <UserInfo>
-                    <UserImg source={require('../asset/user/user1.jpeg')} /> 
-                    <UserInfoText>
-                    <UserName>Dilshan</UserName>
-                    <PostTime>4 Hours ago</PostTime>
-                    </UserInfoText>
-                </UserInfo>
-                <PostText>
-                    This is Your new Assitant "Student Assit" !!!
-                </PostText>
-                <Divider/>
-                <InteractionWrapper>
-                    <Interaction>
-                        <Image source={require('../asset/Icon/thumbs.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
-                        <Text> Noted</Text>
-                    </Interaction>
-                    <Interaction>
-                        <Image source={require('../asset/Icon/comment.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
-                        <Text> Comment</Text>
-                    </Interaction>
-                </InteractionWrapper>
-            </Card>
+            <FlatList 
+            data={Posts}
+            renderItem={({item}) => <PostCard item={item}/>}
+            keyExtractor={item=>item.id}
+            showsVerticalScrollIndicator={false}
+            />
             
         </Container>
     );
