@@ -34,8 +34,8 @@ const PostCard = ({item}) => {
                 <UserInfo>
                     <UserImg source={item.userImg} /> 
                     <UserInfoText>
-                    <UserName>{item.userName}</UserName>
-                    <PostTime>{item.postTime}</PostTime>
+                        <UserName>{item.userName}</UserName>
+                        <PostTime>{item.postTime}</PostTime>
                     </UserInfoText>
                 </UserInfo>
                 <PostText>
