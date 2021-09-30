@@ -50,7 +50,7 @@ const Posts = [
         id: '5',
         userName: 'Hithaisha Perera',
         userImg: require('../asset/user/user5.jpeg'),
-        postTime: '45 mins ago',
+        postTime: '55 mins ago',
         post:
           'HoD Meeting at HQ-3 for IT/IS 37',
         postImg: 'none',
