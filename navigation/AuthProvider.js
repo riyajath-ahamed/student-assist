@@ -18,14 +18,14 @@ export const AuthProvider=({children}) => {
                     try{
                         await auth().signInWithEmailAndPassword(email,password);
                     } catch(e){
-                        alert("Username or Password is incorrect .");
+                        alert("Email or Password is incorrect .");
                     }
                 },
                 register: async(email, password) => {
                     try{
                         await auth().createUserWithEmailAndPassword(email,password);
                     }catch(e){
-                        console.log(e);
+                        alert("Enter a valid Email and Password.");
                     }
                 },
                 logout: async() => {
