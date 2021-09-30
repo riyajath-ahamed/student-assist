@@ -46,6 +46,19 @@ const Posts = [
         likes: '5',
         comments: '0', 
     },
+    {
+        id: '5',
+        userName: 'Hithaisha Perera',
+        userImg: require('../asset/user/user5.jpeg'),
+        postTime: '45 mins ago',
+        post:
+          'HoD Meeting at HQ-3 for IT/IS 37',
+        postImg: 'none',
+        liked: false,
+        likes: '5',
+        comments: '0', 
+    },
+
 ]
 
 const HomeScreen =() => {
