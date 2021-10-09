@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useContext}from "react";
 import {View, Text, StyleSheet, Image } from 'react-native';
 
 import { Card, Container,  UserInfo, UserImg, UserName, UserInfoText, PostTime, PostText, PostImg, InteractionWrapper, Interaction, Divider, InteractionText } from "../../styles/FeedStyles";
 
+import { AuthContext } from "../../navigation/AuthProvider";
+import firestore from '@react-native-firebase/firestore'
 
+import moment from "moment";
 
-const PostCard = ({item}) => {
+const PostCard = ({item, onDelete}) => {
+
+  const {user, logout} = useContext(AuthContext);
 
     likeIcon = item.liked ? require('../../screen/Icons/tumbs2.png') : require('../../screen/Icons/tumbs.png');
 
@@ -32,17 +37,17 @@ const PostCard = ({item}) => {
     return(
         <Card>
                 <UserInfo>
-                    <UserImg source={item.userImg} /> 
+                    <UserImg source={{uri: item.userImg}} /> 
                     <UserInfoText>
                         <UserName>{item.userName}</UserName>
-                        <PostTime>{item.postTime}</PostTime>
+                        <PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime>
                     </UserInfoText>
                 </UserInfo>
                 <PostText>
                     {item.post}
                 </PostText>
                 {/* //<PostImg source={require('../../asset/Post/post1.jpg')} /> */}
-                {item.postImg != 'none' ? <PostImg source={item.postImg}/> : <Divider/>}
+                {item.postImg != null ? <PostImg source={{uri: item.postImg}}/> : <Divider/>}
                 
                 <InteractionWrapper>
                     <Interaction active  ={item.liked} >
@@ -53,6 +58,13 @@ const PostCard = ({item}) => {
                         <Image source={require('../../asset/Icon/comment.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
                         <InteractionText>{commentText}</InteractionText>
                     </Interaction>
+
+                    {user.uid == item.userId ? (
+                    <Interaction onPress={() => onDelete(item.id)}>
+                        <Image source={require('../../asset/Icon/bin.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
+                        <InteractionText>{}</InteractionText>
+                    </Interaction>
+                    ) : null }
                 </InteractionWrapper>
             </Card>
     );
