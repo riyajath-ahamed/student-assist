@@ -10,6 +10,7 @@ import ChatScreen from "../screen/ChatScreen";
 import HomeScreen from "../screen/HomeScreen";
 import ProfileScreen from "../screen/ProfileScreen";
 import AddPostScreen from "../screen/AddPostScreen";
+import EditProfileScreen from "../screen/EditProfileScreen";
 
 import Reminder from "../screen/Reminder";
 
@@ -110,8 +111,16 @@ const FeedStack =({navigation}) =>(
         },
         headerBackTitleVisible: false,
         headerBackImage: () => (
-          <View style={{marginLeft: 15}}>
-            <Ionicons name="arrow-back" size={25} color="#7F3DFF" />
+          <View style={{marginLeft: 5}}>
+            <Image
+              source={require('../screen/Icons/arrowleft.png')}
+              
+              resizeMode="contain"
+              style={{
+                width: 20,
+                height: 20,
+              }}
+              />
           </View>
         ),
       }}
@@ -119,7 +128,46 @@ const FeedStack =({navigation}) =>(
   </Stack.Navigator>
 );
 
+const ProfileStack = ({navigation}) => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Profile1"
+      component={ProfileScreen}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="EditProfile"
+      component={EditProfileScreen}
+      options={{
+        headerTitle: 'Edit Profile',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+  </Stack.Navigator>
+);
+
 const AppStack=() => {
+
+  const getTabBarVisibility = (route) => {
+    const routeName = route.state
+      ? route.state.routes[route.state.index].name
+      : '';
+
+    if (routeName === 'EditProfile') {
+      return false;
+    }
+    return true;
+  };
+
     return(
         <tab.Navigator
         screenOptions={{
@@ -131,7 +179,7 @@ const AppStack=() => {
               left: 10,
               right :10,
               borderRadius: 10,
-              height: 70,
+              height: 50,
               ...styles.shadow  
             }
             
@@ -146,11 +194,10 @@ const AppStack=() => {
             <View style={{alignItems:"center", justifyContent: "center", top:5}}>
               <Image
               source={require('../screen/Icons/home.png')}
-              
               resizeMode="contain"
               style={{
-                width: 40,
-                height: 40,
+                width: 25,
+                height: 25,
                 tintColor:focused ? '#7F3DFF': '#748c94'
               }}
               />
@@ -171,14 +218,14 @@ const AppStack=() => {
                       
                       resizeMode="contain"
                       style={{
-                        width: 40,
-                        height: 40,
+                        width: 25,
+                        height: 25,
                         tintColor:focused ? '#7F3DFF': '#748c94'
                       }}
                       />
                     </View>
                 )
-                //<ion-icon name="calendar-outline"></ion-icon>
+                
 
             }}
 
@@ -214,8 +261,8 @@ const AppStack=() => {
                       
                       resizeMode="contain"
                       style={{
-                        width: 40,
-                        height: 40,
+                        width: 25,
+                        height: 25,
                         tintColor:focused ? '#7F3DFF': '#748c94'
                       }}
                       />
@@ -227,8 +274,10 @@ const AppStack=() => {
 
         <tab.Screen
         name='Profile'
-        component={ProfileScreen}
-        options={{
+        component={ProfileStack}
+        options={({route}) => ({
+          tabBarVisible: 'false',
+          tabBarLabel: 'Home',
           tabBarIcon: ({focused}) => (
             <View style={{alignItems:"center", justifyContent: "center", top:5}}>
               <Image
@@ -236,14 +285,14 @@ const AppStack=() => {
               
               resizeMode="contain"
               style={{
-                width: 40,
-                height: 40,
+                width: 25,
+                height: 25,
                 tintColor:focused ? '#7F3DFF': '#748c94'
               }}
               />
             </View>
         )
-        }}
+        })}
         />
         </tab.Navigator>
     )
