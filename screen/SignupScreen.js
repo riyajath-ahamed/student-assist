@@ -1,11 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { Alert, Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Button, FlatList, StyleSheet, Text, TouchableOpacity, View, Pick } from 'react-native';
 import FormButton from '../asset/components/FormButton';
 import FormButton1 from '../asset/components/FormButton1';
 import FormInput from '../asset/components/Forminput';
-import SocialButton from '../asset/components/SocialButton';
+
 import { windowHeight, windowWidth } from '../asset/utils/Dimentions';
 import { AuthContext } from '../navigation/AuthProvider';
+
+import { Picker } from "@react-native-picker/picker";
+import "react-native-gesture-handler";
 
 
 const SignupScreen=({navigation}) =>{
@@ -14,6 +17,7 @@ const SignupScreen=({navigation}) =>{
   const[confirmpassword,setconfirmPassword]=useState();
 
   const { register } = useContext(AuthContext);
+  const [account, setAccount] = useState();
 
     
     
@@ -30,6 +34,26 @@ const SignupScreen=({navigation}) =>{
             autoCapitalize="none"
             autoCorrect={false}
             />
+
+          <Picker 
+          // itemStyle={{backgroundColor:'#fff'}}
+          // placeholder="Account Type"
+          // labelValue={account}
+          selectedValue={account}
+          onValueChange={(value, index) => setAccount(value)}
+          mode="dropdown"  
+          style={styles1.picker} 
+          >
+
+          <Picker.Item label="Account Type" value="unkown" color="#aaa" />
+          <Picker.Item label="Staff" value="staff" />
+          <Picker.Item label="Student" value="student" />
+          </Picker>
+
+        {/* <Text style={styles1.Text}>  {account}</Text> */}
+
+
+
 
             <FormInput 
             labelValue={password}
@@ -112,6 +136,13 @@ const styles1 = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 20,
-     }
+     },
+     picker: {
+      marginVertical: 10,
+      width: 300,
+      padding: 5,
+      borderWidth: 20,
+      borderColor: "#fff",
+    },
 
   });

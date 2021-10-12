@@ -33,6 +33,7 @@ export const AuthProvider=({children}) => {
                                 fname: '',
                                 lname: '',
                                 email: email,
+                                // accounttyp: account,
                                 createdAt: firestore.Timestamp.fromDate(new Date()),
                                 userImg: null,
                             })
