@@ -9,6 +9,9 @@ import { AuthContext } from '../navigation/AuthProvider';
 
 import { Picker } from "@react-native-picker/picker";
 import "react-native-gesture-handler";
+import firestore from '@react-native-firebase/firestore';
+
+
 
 
 const SignupScreen=({navigation}) =>{
@@ -17,9 +20,18 @@ const SignupScreen=({navigation}) =>{
   const[confirmpassword,setconfirmPassword]=useState();
 
   const { register } = useContext(AuthContext);
+  const [userData, setUserData] = useState(null);
   const [account, setAccount] = useState();
+  const [selectedValue, setSelectedValue] = useState();
 
-    
+
+  
+  // firestore()
+  //       .collection('users')
+  //       .doc(user.uid)
+  //       .update({
+  //         accounttyp: userData.accounttyp,
+  //       })
     
 
     return(
@@ -38,16 +50,20 @@ const SignupScreen=({navigation}) =>{
           <Picker 
           // itemStyle={{backgroundColor:'#fff'}}
           // placeholder="Account Type"
-          // labelValue={account}
-          selectedValue={account}
-          onValueChange={(value, index) => setAccount(value)}
+          labelValue={account}
+          selectedValue={selectedValue}
+          onValueChange={(account,itemindex) => {if(account !== 'disabled'){
+            setSelectedValue(account)
+            setAccount(account)
+          }}}
           mode="dropdown"  
           style={styles1.picker} 
           >
 
-          <Picker.Item label="Account Type" value="unkown" color="#aaa" />
-          <Picker.Item label="Staff" value="staff" />
-          <Picker.Item label="Student" value="student" />
+          <Picker.Item label="Account Type" value="disabled" color="#aaa" />
+          <Picker.Item itemindex="1" label="Staff" value="staff" />
+          <Picker.Item itemindex="3" label="Club" value="student" />
+          <Picker.Item itemindex="2" label="Student" value="student" />
           </Picker>
 
         {/* <Text style={styles1.Text}>  {account}</Text> */}
@@ -82,7 +98,7 @@ const SignupScreen=({navigation}) =>{
 
             <FormButton
             buttonTitle="Sign Up"
-            onPress={() => register(email, password)}
+            onPress={() => register(email, password, account)}
             /> 
 
             <Text>   </Text>

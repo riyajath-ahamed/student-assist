@@ -45,6 +45,7 @@ const EditProfileScreen = () => {
           lname: userData.lname,
           about: userData.about,
           phone: userData.phone,
+          accounttyp:userData.account,
           Department: userData.Department,
           Intake: userData.Intake,
           userImg: imgUrl,
@@ -96,10 +97,10 @@ const EditProfileScreen = () => {
           setUploading(false);
           setImage(null);
     
-          // Alert.alert(
-          //   'Image uploaded!',
-          //   'Your image has been uploaded to the Firebase Cloud Storage Successfully!',
-          // );
+          Alert.alert(
+            'Image uploaded!',
+            'Your image has been uploaded to the Firebase Cloud Storage Successfully!',
+          );
           return url;
     
         } catch (e) {
@@ -237,6 +238,7 @@ const EditProfileScreen = () => {
             {userData ? userData.fname : ''} {userData ? userData.lname : ''}
           </Text>
           <Text>{user.uid}</Text>
+          <Text>{user.accounttyp}</Text>
         </View>
 
         <View style={styles.action}>

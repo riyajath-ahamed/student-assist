@@ -1,6 +1,6 @@
 import React from "react";
 import {View,Text, StyleSheet, Image, ScrollView} from "react-native";
-import { Card, Container, DayText, UserInfo, UserName } from "../styles/reminder";
+import { Card, Container, DayText, UserInfo, UserName,TableTime, UserInfoText, PostText } from "../styles/reminder";
 
 const Reminder = () => {
 return (
@@ -127,6 +127,17 @@ return (
                             }}
                             />
         </Card>
+        <Card>
+        <UserInfo>
+            <UserInfoText>
+            <UserName>Rotaract Meeting</UserName>
+            <PostText>27th August</PostText>
+                <TableTime>6.00PM - 8.00 PM</TableTime>
+
+            </UserInfoText>
+        </UserInfo>
+
+</Card>
 
     </Container>
     </ScrollView>

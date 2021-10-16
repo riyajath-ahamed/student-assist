@@ -6,7 +6,6 @@ import { Alert } from 'react-native';
 
 export const AuthContext = createContext();
 
-
 export const AuthProvider=({children}) => {
     const [user, setUser] = useState(null);
 
@@ -22,7 +21,7 @@ export const AuthProvider=({children}) => {
                         alert("Email or Password is incorrect .");
                     }
                 },
-                register: async(email, password) => {
+                register: async(email, password, account) => {
                     try{
                         await auth().createUserWithEmailAndPassword(email,password)
                         .then(() => {
@@ -33,7 +32,7 @@ export const AuthProvider=({children}) => {
                                 fname: '',
                                 lname: '',
                                 email: email,
-                                // accounttyp: account,
+                                accounttyp: account,
                                 createdAt: firestore.Timestamp.fromDate(new Date()),
                                 userImg: null,
                             })
