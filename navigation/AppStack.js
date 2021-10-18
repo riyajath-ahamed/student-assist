@@ -1,18 +1,24 @@
-import React from "react";
+import React, {useContext, useEffect, useState}from "react";
 import {View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 
 import ChatScreen from "../screen/ChatScreen";
 import HomeScreen from "../screen/HomeScreen";
 import ProfileScreen from "../screen/ProfileScreen";
 import AddPostScreen from "../screen/AddPostScreen";
+import TimeTableSt from "../screen/TimeTableSt";
 import EditProfileScreen from "../screen/EditProfileScreen";
+import firestore from '@react-native-firebase/firestore'
 
 import Reminder from "../screen/Reminder";
+import { AuthContext } from "../navigation/AuthProvider";
+import ReminderS from "../screen/ReminderS";
+import settings from "../screen/settings";
+
+
 
 const Stack = createStackNavigator();
 const tab = createBottomTabNavigator();
@@ -152,10 +158,71 @@ const ProfileStack = ({navigation}) => (
         },
       }}
     />
+    <Stack.Screen
+      name="settings"
+      component={settings}
+      options={{
+        headerTitle: 'Settings',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
   </Stack.Navigator>
 );
 
+// const getaccounttype = async() => {
+//   await firestore()
+//       .collection('users')
+//       .doc(user.accounttyp)
+//       .get()
+//           if(setUserData == 'student'){
+//             return account= Reminder;
+
+//           }else{
+//             return account= ReminderS;
+//           }
+//         }
+
+        
 const AppStack=() => {
+  const {user, logout} = useContext(AuthContext);
+  const [userData,setUserData]= useState();
+  const [account,setAccount]= useState();
+  const [accounttyp,setAccounttyp]= useState();
+
+  var accounts = Reminder;
+
+  const getUser = async() => {
+    const currentUser = await firestore()
+    .collection('users')
+    .doc(user.uid)
+    .get(accounttyp)
+    .then((documentSnapshot) => {
+      if( documentSnapshot.exists ) {
+        console.log('User Data', documentSnapshot.data());
+        setAccounttyp(documentSnapshot.data());
+      }
+    })
+    .catch(error => console.log(error))
+  }
+
+  if(setAccounttyp == 'student'){
+    accounts = Reminder
+  }else{
+    accounts = ReminderS
+  }
+  
+  useEffect(() => {
+    getUser();
+  }, []);
+        
+  
 
   const getTabBarVisibility = (route) => {
     const routeName = route.state
@@ -208,7 +275,7 @@ const AppStack=() => {
 
         <tab.Screen
             name='Time-Table'
-            component={ChatScreen}
+            component={TimeTableSt}
             options={{
               
                 tabBarIcon: ({focused}) => (
@@ -252,7 +319,7 @@ const AppStack=() => {
         />
         <tab.Screen
             name='Reminder'
-            component={Reminder}
+            component={ReminderS}
             options={{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems:"center", justifyContent: "center", top:5}}>

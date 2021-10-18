@@ -8,6 +8,7 @@ import { AuthContext } from "../navigation/AuthProvider";
 
 
 import PostCard from '../asset/components/PostCard';
+import settings from "./settings";
 
 const ProfileScreen =({navigation, route}) => {
     const {user, logout} = useContext(AuthContext);
@@ -89,17 +90,31 @@ const ProfileScreen =({navigation, route}) => {
 
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+          <TouchableOpacity onPress={() => { navigation.navigate(settings);}}>
+          <Image source={require('../asset/Icon/menu.png')}
+                            resizeMode="contain"
+                            
+                            style={{
+                                width: 30,
+                                height: 30,
+                                marginLeft: 370,
+                                marginTop: 10
+                            }}
+                            />
+          </TouchableOpacity>
+          
             <ScrollView
             style={styles.container}
             contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
             showsVerticalScrollIndicator={false}
             >
+              
             <Image
                 style={styles.userImg}
                 source={{uri: userData
                   ? userData.userImg ||
-                    'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'
-                  : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg',}}
+                    'https://firebasestorage.googleapis.com/v0/b/studentassistant-702c0.appspot.com/o/user.png?alt=media&token=b025c0fe-2481-4798-9577-3b8e689ff0e5'
+                  : 'https://firebasestorage.googleapis.com/v0/b/studentassistant-702c0.appspot.com/o/user.png?alt=media&token=b025c0fe-2481-4798-9577-3b8e689ff0e5',}}
             />
             <Text style={styles.userName}>{userData ? userData.fname || 'Test' : 'Test'} {userData ? userData.lname || 'User' : 'User'}</Text>
 
@@ -122,6 +137,7 @@ const ProfileScreen =({navigation, route}) => {
               }}>
                 <Text style={styles.userBtnTxt}>Edit</Text>
               </TouchableOpacity>
+              
               <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
                 <Text style={styles.userBtnTxt}>Log Out</Text>
               </TouchableOpacity>

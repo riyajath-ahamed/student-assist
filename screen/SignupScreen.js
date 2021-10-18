@@ -10,6 +10,7 @@ import { AuthContext } from '../navigation/AuthProvider';
 import { Picker } from "@react-native-picker/picker";
 import "react-native-gesture-handler";
 import firestore from '@react-native-firebase/firestore';
+import KeyboardAvoidingWrapper from '../asset/components/KeyboardAvoidingWrapper';
 
 
 
@@ -18,6 +19,8 @@ const SignupScreen=({navigation}) =>{
   const[email,setEmail]=useState();
   const[password,setPassword]=useState();
   const[confirmpassword,setconfirmPassword]=useState();
+  const[fname,setFname]=useState();
+  const[lname,setLname]=useState();
 
   const { register } = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
@@ -35,6 +38,7 @@ const SignupScreen=({navigation}) =>{
     
 
     return(
+      <KeyboardAvoidingWrapper>
         <View style={styles1.container}>
             <Text style={styles1.Text}>Create an Account</Text>
             
@@ -68,6 +72,19 @@ const SignupScreen=({navigation}) =>{
 
         {/* <Text style={styles1.Text}>  {account}</Text> */}
 
+        <FormInput 
+            labelValue={fname}
+            onChangeText={(fname)=>setFname(fname)}
+            placeholderText="First Name"
+            
+            />
+            <FormInput 
+            labelValue={lname}
+            onChangeText={(lname)=>setLname(lname)}
+            placeholderText="Last Name"
+            
+            />
+
 
 
 
@@ -91,6 +108,7 @@ const SignupScreen=({navigation}) =>{
               register ? password !== confirmpassword :
                     alert("Passwords don't match.")
             }
+            
 
           
      
@@ -98,7 +116,7 @@ const SignupScreen=({navigation}) =>{
 
             <FormButton
             buttonTitle="Sign Up"
-            onPress={() => register(email, password, account)}
+            onPress={() => register(email, password, account, fname, lname)}
             /> 
 
             <Text>   </Text>
@@ -111,7 +129,7 @@ const SignupScreen=({navigation}) =>{
             
 
         </View>
-        
+        </KeyboardAvoidingWrapper>
 
     );
 };

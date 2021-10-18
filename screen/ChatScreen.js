@@ -6,6 +6,7 @@ import {Picker} from '@react-native-picker/picker';
 import { AuthContext } from "../../navigation/AuthProvider";
 import { Card, Container, DayText, PostText, TableTime, UserInfo, UserInfoText, UserName } from "../styles/TimeTableCon";
 
+import moment from "moment";
 
 const ChatScreen = () => {
 
@@ -14,7 +15,7 @@ return (
 <Container>
 <View>
   
-  <DayText>Happy Friday</DayText>
+  <DayText>Happy {moment().format('dddd')}</DayText>
 
 <Card>
   <UserInfo>

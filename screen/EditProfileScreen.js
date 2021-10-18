@@ -9,6 +9,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import {AuthContext} from '../navigation/AuthProvider';
 import firestore from '@react-native-firebase/firestore';
 import storage from '@react-native-firebase/storage';
+import KeyboardAvoidingWrapper from "../asset/components/KeyboardAvoidingWrapper";
 
 const EditProfileScreen = () => {
     const {user, logout} = useContext(AuthContext);
@@ -45,7 +46,7 @@ const EditProfileScreen = () => {
           lname: userData.lname,
           about: userData.about,
           phone: userData.phone,
-          accounttyp:userData.account,
+          // accounttyp:userData.account,
           Department: userData.Department,
           Intake: userData.Intake,
           userImg: imgUrl,
@@ -181,6 +182,8 @@ const EditProfileScreen = () => {
 
 
     return(
+      
+      <KeyboardAvoidingWrapper>
         <View style={styles.container}>
       <BottomSheet
         ref={bs}
@@ -212,8 +215,8 @@ const EditProfileScreen = () => {
                     ? image
                     : userData
                     ? userData.userImg ||
-                      'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'
-                    : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg',
+                      'https://drive.google.com/file/d/1Y3vOoSyb_j4g7jRUuxNQd8kSr4AutJbq/view?usp=sharing'
+                    : 'https://drive.google.com/file/d/1Y3vOoSyb_j4g7jRUuxNQd8kSr4AutJbq/view?usp=sharing',
                 }}
                 style={{height: 100, width: 100}}
                 imageStyle={{borderRadius: 15}}>
@@ -348,8 +351,12 @@ const EditProfileScreen = () => {
           />
         </View>
         <FormButton buttonTitle="Update" onPress={handleUpdate} />
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
       </Animated.View>
     </View>
+    </KeyboardAvoidingWrapper>
     );
 };
 
@@ -370,7 +377,7 @@ const styles = StyleSheet.create({
     panel: {
       padding: 20,
       backgroundColor: '#FFFFFF',
-      paddingTop: 20,
+      paddingTop: 10,
       width: '100%',
     },
     header: {
@@ -378,8 +385,8 @@ const styles = StyleSheet.create({
       shadowColor: '#333333',
       shadowOffset: {width: -1, height: -3},
       shadowRadius: 2,
-      shadowOpacity: 0.4,
-      paddingTop: 20,
+      shadowOpacity: 1,
+      paddingTop: -80,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
     },

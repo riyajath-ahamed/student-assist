@@ -21,7 +21,7 @@ export const AuthProvider=({children}) => {
                         alert("Email or Password is incorrect .");
                     }
                 },
-                register: async(email, password, account) => {
+                register: async(email, password, account, fname, lname) => {
                     try{
                         await auth().createUserWithEmailAndPassword(email,password)
                         .then(() => {
@@ -29,8 +29,8 @@ export const AuthProvider=({children}) => {
                             //with the appropriate details.
                             firestore().collection('users').doc(auth().currentUser.uid)
                             .set({
-                                fname: '',
-                                lname: '',
+                                fname: fname,
+                                lname: lname,
                                 email: email,
                                 accounttyp: account,
                                 createdAt: firestore.Timestamp.fromDate(new Date()),
