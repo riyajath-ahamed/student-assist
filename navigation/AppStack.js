@@ -197,26 +197,40 @@ const AppStack=() => {
   const [accounttyp,setAccounttyp]= useState();
 
   var accounts = Reminder;
+  var accounts2 = ChatScreen;
 
   const getUser = async() => {
     const currentUser = await firestore()
     .collection('users')
     .doc(user.uid)
-    .get(accounttyp)
+
+    .get()
     .then((documentSnapshot) => {
       if( documentSnapshot.exists ) {
-        console.log('User Data', documentSnapshot.data());
-        setAccounttyp(documentSnapshot.data());
+        console.log('User Data 1', documentSnapshot.data().accounttyp);
+        setAccounttyp(documentSnapshot.data().accounttyp);
+        
       }
+
     })
+    
     .catch(error => console.log(error))
+    
   }
 
-  if(setAccounttyp == 'student'){
+  if(accounttyp == 'student'){
     accounts = Reminder
   }else{
     accounts = ReminderS
   }
+
+  if(accounttyp == 'student'){
+    accounts2 = ChatScreen
+  }else{
+    accounts2 = TimeTableSt
+  }
+
+
   
   useEffect(() => {
     getUser();
@@ -275,7 +289,7 @@ const AppStack=() => {
 
         <tab.Screen
             name='Time-Table'
-            component={TimeTableSt}
+            component={accounts2}
             options={{
               
                 tabBarIcon: ({focused}) => (
@@ -319,7 +333,7 @@ const AppStack=() => {
         />
         <tab.Screen
             name='Reminder'
-            component={ReminderS}
+            component={accounts}
             options={{
                 tabBarIcon: ({focused}) => (
                     <View style={{alignItems:"center", justifyContent: "center", top:5}}>
