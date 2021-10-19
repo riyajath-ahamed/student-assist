@@ -8,6 +8,9 @@ import { Root, Popup } from 'popup-ui';
 
 const ReminderS = () => {
     const [modalVisible, setModalVisible] = useState(false);
+
+
+    
 return (
     <ScrollView>
         
