@@ -358,7 +358,7 @@ const AppStack=() => {
         component={ProfileStack}
         options={({route}) => ({
           tabBarVisible: 'false',
-          tabBarLabel: 'Home',
+          tabBarLabel: 'Profile',
           tabBarIcon: ({focused}) => (
             <View style={{alignItems:"center", justifyContent: "center", top:5}}>
               <Image

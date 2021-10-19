@@ -90,18 +90,30 @@ const ProfileScreen =({navigation, route}) => {
 
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-          <TouchableOpacity onPress={() => { navigation.navigate(settings);}}>
+          {route.params ? ( <>
+             <View>
+                 
+             </View>
+             </>
+
+             ) : (
+                 <>
+            
+            <TouchableOpacity onPress={() => { navigation.navigate(settings);}}>
           <Image source={require('../asset/Icon/menu.png')}
                             resizeMode="contain"
                             
                             style={{
-                                width: 30,
-                                height: 30,
-                                marginLeft: 370,
+                                width: 40,
+                                height: 40,
+                                marginLeft: 360,
                                 marginTop: 10
                             }}
                             />
           </TouchableOpacity>
+              </>
+             )}
+          
           
             <ScrollView
             style={styles.container}
@@ -117,8 +129,9 @@ const ProfileScreen =({navigation, route}) => {
                   : 'https://firebasestorage.googleapis.com/v0/b/studentassistant-702c0.appspot.com/o/user.png?alt=media&token=b025c0fe-2481-4798-9577-3b8e689ff0e5',}}
             />
             <Text style={styles.userName}>{userData ? userData.fname || 'Test' : 'Test'} {userData ? userData.lname || 'User' : 'User'}</Text>
-
+            
             <Text style={styles.aboutUser}>
+            {userData ? userData.index || 'No Index added.' : ''}{"\n"}
               {userData ? userData.about || 'No details added.' : ''}
               </Text>
 

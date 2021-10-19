@@ -1,9 +1,10 @@
 import React, {useState, useContext} from "react";
-import {View,Text, StyleSheet, TouchableOpacity,  ScrollView, Settings } from "react-native";
+import {View,Text, StyleSheet, TouchableOpacity,  ScrollView, Image } from "react-native";
 
 
 
 import { AuthContext } from "../../navigation/AuthProvider";
+import { Card, UserInfo, UserInfoText, UserName } from "../styles/settingss";
 
 
 
@@ -15,7 +16,71 @@ const settings = () => {
 
 return (
     <View>
-        <Text>settings</Text>
+         <Card>
+            <TouchableOpacity>
+            <UserInfo>
+
+            <Image source={require('../asset/Icon/campus.png')}
+                            resizeMode="contain"
+                            
+                            style={{
+                                width: 50,
+                                height: 50,
+                                marginLeft: 20,
+                                marginTop: 0
+                            }}
+                            />
+                            <UserInfoText>
+                                <UserName> About Campus</UserName>
+
+                            </UserInfoText> 
+                            </UserInfo>
+            </TouchableOpacity>
+        </Card>
+
+        <Card>
+            <TouchableOpacity>
+            <UserInfo>
+
+            <Image source={require('../asset/Icon/problem.png')}
+                            resizeMode="contain"
+                            
+                            style={{
+                                width: 50,
+                                height: 50,
+                                marginLeft: 20,
+                                marginTop: 0
+                            }}
+                            />
+                            <UserInfoText>
+                                <UserName> Report a Problem</UserName>
+
+                            </UserInfoText> 
+                            </UserInfo>
+            </TouchableOpacity>
+        </Card>
+        <Card>
+            <TouchableOpacity>
+            <UserInfo>
+
+            <Image source={require('../asset/Icon/adtus.png')}
+                            resizeMode="contain"
+                            
+                            style={{
+                                width: 50,
+                                height: 50,
+                                marginLeft: 20,
+                                marginTop: 0
+                            }}
+                            />
+                            <UserInfoText>
+                                <UserName> About Us</UserName>
+
+                            </UserInfoText> 
+                            </UserInfo>
+            </TouchableOpacity>
+        </Card>
+        
     </View>
  
     

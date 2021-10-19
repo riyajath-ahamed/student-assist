@@ -45,8 +45,10 @@ const EditProfileScreen = () => {
           fname: userData.fname,
           lname: userData.lname,
           about: userData.about,
+          index: userData.index,
+
           phone: userData.phone,
-          // accounttyp:userData.account,
+          
           Department: userData.Department,
           Intake: userData.Intake,
           userImg: imgUrl,
@@ -298,6 +300,23 @@ const EditProfileScreen = () => {
           />
         </View>
         <View style={styles.action}>
+        <Image source={require('../asset/Icon/index.png')}
+            resizeMode="contain"
+            style={{
+                width: 20,
+                height: 20,
+              }}
+              />
+          <TextInput
+            placeholder="Index No"
+            placeholderTextColor="#666666"
+            autoCorrect={false}
+            value={userData ? userData.index : ''}
+            onChangeText={(txt) => setUserData({...userData, index: txt})}
+            style={styles.textInput}
+          />
+        </View>
+        <View style={styles.action}>
         <Image source={require('../asset/Icon/phone.png')}
             resizeMode="contain"
             style={{
@@ -315,6 +334,7 @@ const EditProfileScreen = () => {
             style={styles.textInput}
           />
         </View>
+
 
         <View style={styles.action}>
         <Image source={require('../asset/Icon/department.png')}
