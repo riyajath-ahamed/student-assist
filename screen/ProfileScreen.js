@@ -163,17 +163,20 @@ const ProfileScreen =({navigation, route}) => {
                     <Text style={styles.userInfoTitle}>{posts.length}</Text>
                     <Text style={styles.userInfoSubTitle}>Messages</Text>
                 </View>
-                <View style={styles.userInfoItem}>
+                {/* <View style={styles.userInfoItem}>
                     <Text style={styles.userInfoTitle}>10</Text>
                     <Text style={styles.userInfoSubTitle}>Pins</Text>
-                </View>
+                </View> */}
                 </View>
 
                 {posts.map((item) => (
                  <PostCard key={item.id} item={item} onDelete={handleDelete} />
                  ))}
+                 
 
             </ScrollView>
+            <Text></Text>
+                 <Text></Text>
         </SafeAreaView>
     );
 }

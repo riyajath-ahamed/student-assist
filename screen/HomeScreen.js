@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {View, Text, StyleSheet, Image, FlatList, Alert } from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, Alert, RefreshControl } from 'react-native';
 
 //import{Card, Container} from '/Programming/Student/styles/FeedStyles'
 
@@ -202,6 +202,8 @@ const HomeScreen =({navigation}) => {
         .catch((e) => console.log('Error deleting textt post.', e));
     };
 
+    const [refreshing, setRefreshing]= useState(false);
+
 
 
     return(
@@ -213,6 +215,7 @@ const HomeScreen =({navigation}) => {
              }/>}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
+            
             />
             
         </Container>

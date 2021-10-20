@@ -38,11 +38,19 @@ export const UserName = styled.Text`
     font-family: 'Lato-Regular'
     color: #fff;
 `;
+
+export const UserName1 = styled.Text`
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Lato-Regular'
+    color: #7F3DFF;
+`;
+
 export const  DayText= styled.Text`
     font-size: 25px;
     font-weight: bold;
     font-family: 'Lato-Regular'
-    padding-left: 100px;
+    padding-left: 80px;
     padding-top: 20px;
     padding-bottom: 15px;
     color: #7F3DFF;
