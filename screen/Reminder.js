@@ -1,8 +1,143 @@
-import React from "react";
+import React, {useState,useEffect}from "react";
 import {View,Text, StyleSheet, Image, ScrollView, TouchableOpacity} from "react-native";
 import { Card, Container, DayText, UserInfo, UserName,TableTime, UserInfoText, PostText, Card1 } from "../styles/reminder";
+import firestore from '@react-native-firebase/firestore';
+
+
+
 
 const Reminder = () => {
+
+    const [publication,setPublication] = useState();
+    const [canteen,setCanteen] = useState();
+    const [gym,setGym] = useState();
+    const [miroom,setMiroom] = useState();
+
+
+    useEffect(() => {
+        getUser();
+      }, []);
+
+    const getUser = async() => {
+        const currentUser = firestore()
+        .collection('reminder')
+        // .doc(publication)
+        .get()
+        .then(querySnapshot => {
+            console.log('Total users: ', querySnapshot.size);
+        
+            querySnapshot.forEach(documentSnapshot => {
+              console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+
+            });
+          })
+        .catch(error => console.log(error));
+
+        const currentUser0 = firestore()
+        .collection('reminder')
+        .doc('publication')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setPublication(documentSnapshot.data().open1);
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+      
+      const currentUser1 = firestore()
+        .collection('reminder')
+        .doc('canteen')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setCanteen(documentSnapshot.data().open1);
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+      
+
+      const currentUser2 = firestore()
+        .collection('reminder')
+        .doc('gym')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setGym(documentSnapshot.data().open1);
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+      
+
+      const currentUser3 = firestore()
+        .collection('reminder')
+        .doc('miroom')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setMiroom(documentSnapshot.data().open1);
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+      }
+
+    //   useEffect(() => {
+    //     getUser();
+    //   }, []);
+
+
+      function pub(){
+        if(publication === true){
+            return require('../asset/Icon/open.png')
+        }else if (publication === false){
+            return require('../asset/Icon/close.png')
+          }
+      };
+
+      function cant(){
+        if(canteen === true){
+            return require('../asset/Icon/open.png')
+        }else if (canteen === false){
+            return require('../asset/Icon/close.png')
+          }
+      };
+
+      
+      function gymm(){
+        if(gym === true){
+            return require('../asset/Icon/open.png')
+        }else if (gym === false){
+            return require('../asset/Icon/close.png')
+          }
+      };
+
+      function mirm(){
+        if(miroom === true){
+            return require('../asset/Icon/open.png')
+        }else if (miroom === false){
+            return require('../asset/Icon/close.png')
+          }
+      };
+      
+
+      
+
+
 return (
     <ScrollView>
     <Container>
@@ -28,7 +163,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/close.png')}
+            <Image source={pub()}
                             resizeMode="contain"
                             
                             style={{
@@ -58,7 +193,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/open.png')}
+            <Image source={cant()}
                             resizeMode="contain"
                             
                             style={{
@@ -88,7 +223,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/open.png')}
+            <Image source={gymm()}
                             resizeMode="contain"
                             
                             style={{
@@ -117,7 +252,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/close.png')}
+            <Image source={mirm()}
                             resizeMode="contain"
                             
                             style={{
@@ -127,7 +262,7 @@ return (
                             }}
                             />
         </Card>
-        <Card1>
+        {/* <Card1>
         <UserInfo>
             <UserInfoText>
             <UserName>Rotaract Meeting</UserName>
@@ -178,7 +313,7 @@ return (
             </UserInfoText>
         </UserInfo>
 
-</Card1>
+</Card1> */}
 
     </Container>
     </ScrollView>
