@@ -17,6 +17,7 @@ import Reminder from "../screen/Reminder";
 import { AuthContext } from "../navigation/AuthProvider";
 import ReminderS from "../screen/ReminderS";
 import settings from "../screen/settings";
+import TimeTablecomp from "../screen/TimeTablecomp";
 
 
 
@@ -161,6 +162,21 @@ const ProfileStack = ({navigation}) => (
     <Stack.Screen
       name="settings"
       component={settings}
+      options={{
+        headerTitle: 'Time Table',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+    <Stack.Screen
+      name="Time Table"
+      component={TimeTablecomp}
       options={{
         headerTitle: 'Settings',
         headerBackTitleVisible: false,

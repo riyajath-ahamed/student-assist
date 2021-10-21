@@ -9,6 +9,7 @@ import { Card, Container, DayText, PostText, TableTime, UserInfo, UserInfoText, 
 import moment from "moment";
 import FormInput from "../asset/components/Forminput";
 import firestore from '@react-native-firebase/firestore';
+import KeyboardAvoidingWrapper from '../asset/components/KeyboardAvoidingWrapper';
 
 // import { Root, Popup } from 'popup-ui'
 
@@ -25,7 +26,11 @@ const TimeTableSt = () => {
     .doc(days)
     .update({
       sub1: userData.sub1,
+      sub1lec:userData.sub1lec,
+      sub1clz:userData.sub1clz,
       sub2: userData.sub2, 
+      sub2lec:userData.sub2lec,
+      sub2clz:userData.sub2clz,
     })
     .then(() => {
       console.log('TimeTable Updated!');
@@ -50,12 +55,14 @@ return (
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          Alert.alert("Window has been closed.");
           setModalVisible(!modalVisible);
         }}
       >
+        <KeyboardAvoidingWrapper>
         <View style={styles1.centeredView}>
           <View style={styles1.modalView}>
+            
             <UserName1>{days}</UserName1>
             <Text>Subject 1</Text>
             <FormInput
@@ -64,12 +71,36 @@ return (
             onChangeText={(txt) => setUserData({...userData, sub1: txt})}
             //style={styles1.textInput}
           />
+          <FormInput
+            placeholder="Subject 1 Lecturer"
+            value={userData ? userData.Department : ''}
+            onChangeText={(txt) => setUserData({...userData, sub1lec: txt})}
+            //style={styles1.textInput}
+          />
+          <FormInput
+            placeholder="Subject 1 Classroom"
+            value={userData ? userData.Department : ''}
+            onChangeText={(txt) => setUserData({...userData, sub1clz: txt})}
+            //style={styles1.textInput}
+          />
           <Text>Subject 2</Text>
           <FormInput
             placeholder="Subject 2"
             value={userData ? userData.Department : ''}
             onChangeText={(txt) => setUserData({...userData, sub2: txt})}
             // style={styles1.textInput}
+          />
+          <FormInput
+            placeholder="Subject 2 Lecturer"
+            value={userData ? userData.Department : ''}
+            onChangeText={(txt) => setUserData({...userData, sub2lec: txt})}
+            //style={styles1.textInput}
+          />
+          <FormInput
+            placeholder="Subject 2 Classroom"
+            value={userData ? userData.Department : ''}
+            onChangeText={(txt) => setUserData({...userData, sub2clz: txt})}
+            //style={styles1.textInput}
           />
 
             <Pressable
@@ -86,6 +117,7 @@ return (
             </Pressable>
           </View>
         </View>
+        </KeyboardAvoidingWrapper>
       </Modal>
   
   <DayText>Happy {moment().format('dddd')}</DayText>
@@ -157,7 +189,7 @@ return (
 <TouchableOpacity
 
 >
-  {/* <Text>Complete Time-Table </Text> */}
+ <Text style={styles1.textStyle}>Complete Time Table</Text>
 <Image
                       source={require('../screen/Icons/transactiontimetable.png')}
                       
@@ -169,6 +201,7 @@ return (
                         
                       }}
                       />
+                      
 </TouchableOpacity>
 </Card>
 </View>

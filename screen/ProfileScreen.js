@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
-import {View, Text,Image , StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import {View, Text,Image , StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
 
 import firestore from '@react-native-firebase/firestore';
 
@@ -86,7 +86,75 @@ const ProfileScreen =({navigation, route}) => {
       navigation.addListener("focus", () => setLoading(!loading));
   }, [navigation, loading]);
 
-    const handleDelete = () => {};
+  const handleDelete = (postId) => {
+    Alert.alert(
+      'Delete post',
+      'Are you sure?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed!'),
+          style: 'cancel',
+        },
+        {
+          text: 'Confirm',
+          onPress: () => deletePost(postId),
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
+
+
+    const deletePost = (postId) => {
+      console.log('Current Post Id: ', postId);
+  
+      firestore()
+        .collection('posts')
+        .doc(postId)
+        .get()
+        .then((documentSnapshot) => {
+          if (documentSnapshot.exists) {
+            const {postImg} = documentSnapshot.data();
+  
+            if (postImg != null) {
+              const storageRef = storage().refFromURL(postImg);
+              const imageRef = storage().ref(storageRef.fullPath);
+  
+              imageRef
+                .delete()
+                .then(() => {
+                  console.log(`${postImg} has been deleted successfully.`);
+                  deleteFirestoreData(postId);
+                  setDeleted(true);
+                })
+                .catch((e) => {
+                  console.log('Error while deleting the image. ', e);
+                });
+              // for only text
+            } else {
+              deleteFirestoreData(postId);
+            }
+          }
+        });
+    };
+  
+    const deleteFirestoreData = (postId) => {
+      firestore()
+        .collection('posts')
+        .doc(postId)
+        .delete()
+        .then(() => {
+          Alert.alert(
+            'Post deleted!',
+            'Your post has been deleted successfully!',
+          );
+          setDeleted(true);
+        })
+        .catch((e) => console.log('Error deleting textt post.', e));
+    };
+
 
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>

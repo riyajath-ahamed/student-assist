@@ -8,6 +8,12 @@ export const AuthContext = createContext();
 
 export const AuthProvider=({children}) => {
     const [user, setUser] = useState(null);
+    function comp(){
+        if (email || password == ""){
+          return Alert.alert('Enter your Email and Password')
+        }
+    
+      };
 
     return(
         <AuthContext.Provider
@@ -17,6 +23,8 @@ export const AuthProvider=({children}) => {
                 login:async(email, password) => {
                     try{
                         await auth().signInWithEmailAndPassword(email,password);
+                        
+                        
                     } catch(e){
                         alert("Email or Password is incorrect .");
                     }
@@ -39,12 +47,14 @@ export const AuthProvider=({children}) => {
                             //ensure we catch any errors at this stage to advise us if something does go wrong
                             .catch(error => {
                                 console.log('Something went wrong with added user to firestore: ', error);
+                                Alert.alert('Something went wrong with added user to firestore:')
                             })
                           })
                           //we need to catch the whole sign up process if it fails too.
                           .catch(error => {
                               console.log('Something went wrong with sign up: ', error);
-                          });
+                          })
+                        .catch(Alert.alert("Enter the correct Email and Password! "));
                     }catch(e){
                         alert("Enter a valid Email and Password.");
                     }
