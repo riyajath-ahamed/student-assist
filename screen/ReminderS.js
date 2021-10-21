@@ -1,19 +1,57 @@
 import React, {useState} from "react";
-import {View,Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, Pressable } from "react-native";
+import {View,Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, Pressable, Switch } from "react-native";
 import * as AddCalendarEvent from 'react-native-add-calendar-event';
 
 import { Card, Container, DayText, UserInfo, UserName,TableTime, UserInfoText, PostText, Card1 } from "../styles/reminder";
-
+import FormInput from "../asset/components/Forminput";
 import { Root, Popup } from 'popup-ui';
 
 const ReminderS = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [userData, setUserData] = useState(null);
+
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
 
     
 return (
     <ScrollView>
-        
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles1.centeredView}>
+          <View style={styles1.modalView}>
+            <DayText>Publication</DayText>
+            <Switch
+                trackColor={{ false: "#767577", true: "#7F3DFF" }}
+                thumbColor={isEnabled ? "#4CD964" : "#FF3939"}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={toggleSwitch}
+                value={isEnabled}
+            />
+
+            <Pressable
+              style={[styles1.button, styles1.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles1.textStyle}>Cancel</Text>
+            </Pressable>
+            <Pressable
+              style={[styles1.button, styles1.buttonSave]}
+              onPress={() => {setModalVisible(!modalVisible); updatetime()}}
+            >
+              <Text style={styles1.textStyle}> Save </Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     <Container>
         <DayText>Reminder</DayText>
         
@@ -21,6 +59,7 @@ return (
         style={styles1.cardleft}
         >
             <TouchableOpacity
+             onPress={() => {setModalVisible(true); } }
         
         >
             
@@ -228,5 +267,67 @@ const styles1 = StyleSheet.create({
         marginLeft: 210,
         marginTop: -227,
     },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+      },
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+      buttonClose: {
+        marginRight: 170,
+        marginBottom:-40,
+        backgroundColor: "#2196F3",
+      },
+      buttonSave: {
+        marginRight: -200,
+        backgroundColor: "#bce954",
+      },
+      textStyle: {
+        fontSize:15,
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+      },
+      textInput: {
+        flex: 1,
+        marginTop: Platform.OS === 'ios' ? 0 : -12,
+        paddingLeft: 10,
+        color: '#333333',
+      },
+      action: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#f2f2f2',
+        paddingBottom: 5,
+      },
 
 })

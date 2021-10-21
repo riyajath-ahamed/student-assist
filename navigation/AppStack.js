@@ -316,7 +316,7 @@ const AppStack=() => {
           options={{
             tabBarIcon: ({focused}) =>(
               <Image
-              source={require("/Programming/Student/screen/Icons/Add.png")}
+              source={require("../screen/Icons/Add.png")}
               resizeMode="contain"
               style={{
                 width: 60,

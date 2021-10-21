@@ -308,7 +308,7 @@ const EditProfileScreen = () => {
               }}
               />
           <TextInput
-            placeholder="Index No"
+            placeholder="Index No / Service No"
             placeholderTextColor="#666666"
             autoCorrect={false}
             value={userData ? userData.index : ''}
