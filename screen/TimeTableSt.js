@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import {View,Text, StyleSheet, TouchableOpacity,  ScrollView,  Alert, Modal, Pressable, TextInput, Image } from "react-native";
 import {ProgressBar} from '@react-native-community/progress-bar-android';
 
@@ -11,14 +11,39 @@ import FormInput from "../asset/components/Forminput";
 import firestore from '@react-native-firebase/firestore';
 import KeyboardAvoidingWrapper from '../asset/components/KeyboardAvoidingWrapper';
 
+import TimeTablecomp from "./TimeTablecomp";
+
 // import { Root, Popup } from 'popup-ui'
 
-const TimeTableSt = () => {
+const TimeTableSt = ({navigation, route}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [days,setDays] = useState("");
   // const[sub1,setSub1]=useState();
   // const[sub2,setSub2]=useState();
   const [userData, setUserData] = useState(null);
+  const [timetablepro, setTimetablepro] = useState(); 
+
+  
+
+  const getTable = async() => {
+  const currentUser = firestore()
+        .collection('timetable')
+        .get()
+        .then(querySnapshot => {
+            console.log('Total users: ', querySnapshot.size);
+        
+            querySnapshot.forEach(documentSnapshot => {
+              console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+              setTimetablepro(documentSnapshot.id, documentSnapshot.data());
+
+
+            });
+          })
+        .catch(error => console.log(error));
+  }
+  useEffect(() => {
+        getTable();
+      }, []);
 
   const updatetime = async() => {
     firestore()
@@ -187,9 +212,9 @@ return (
 </Card>
 <Card>
 <TouchableOpacity
-
+// onPress={() => { navigation.navigate(TimeTablecomp);}}
 >
- <Text style={styles1.textStyle}>Complete Time Table</Text>
+ {/* <Text style={styles1.textStyle}>Complete Time Table</Text>
 <Image
                       source={require('../screen/Icons/transactiontimetable.png')}
                       
@@ -200,13 +225,13 @@ return (
                         
                         
                       }}
-                      />
+                      /> */}
                       
 </TouchableOpacity>
 </Card>
 </View>
 </Container>
-<Text>{days}</Text>
+<Text>{timetablepro}</Text>
 </ScrollView>
 
 

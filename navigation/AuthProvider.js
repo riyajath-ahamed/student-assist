@@ -22,7 +22,12 @@ export const AuthProvider=({children}) => {
                 setUser,
                 login:async(email, password) => {
                     try{
-                        await auth().signInWithEmailAndPassword(email,password);
+                        await auth().signInWithEmailAndPassword(email,password)
+                        .catch(error => {
+                            // Alert for the 
+                            console.log('Something went wrong with added user to firestore: ', error);
+                            Alert.alert('Enter A valid Email and password');
+                        })
                         
                         
                     } catch(e){
@@ -47,7 +52,7 @@ export const AuthProvider=({children}) => {
                             //ensure we catch any errors at this stage to advise us if something does go wrong
                             .catch(error => {
                                 console.log('Something went wrong with added user to firestore: ', error);
-                                Alert.alert('Something went wrong with added user to firestore:')
+                                Alert.alert('Something went wrong with added user to firestore:');
                             })
                           })
                           //we need to catch the whole sign up process if it fails too.

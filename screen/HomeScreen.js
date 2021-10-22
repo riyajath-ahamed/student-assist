@@ -124,7 +124,8 @@ const HomeScreen =({navigation}) => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+    navigation.addListener("focus", () => setLoading(!loading));
+  }, [navigation, loading]);
 
   useEffect(() => {
     fetchPosts();

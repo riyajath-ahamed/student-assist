@@ -9,6 +9,7 @@ import { AuthContext } from "../navigation/AuthProvider";
 
 import PostCard from '../asset/components/PostCard';
 import settings from "./settings";
+import TimeTablecomp from "./TimeTablecomp";
 
 const ProfileScreen =({navigation, route}) => {
     const {user, logout} = useContext(AuthContext);
@@ -179,6 +180,18 @@ const ProfileScreen =({navigation, route}) => {
                             }}
                             />
           </TouchableOpacity>
+          {/* <TouchableOpacity onPress={() => { navigation.navigate(TimeTablecomp);}}>
+          <Image source={require('../asset/Icon/calendar.png')}
+                            resizeMode="contain"
+                            
+                            style={{
+                                width: 30,
+                                height: 30,
+                                marginLeft: 10,
+                                marginTop: -40,
+                            }}
+                            />
+          </TouchableOpacity> */}
               </>
              )}
           

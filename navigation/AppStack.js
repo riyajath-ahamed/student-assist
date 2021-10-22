@@ -163,7 +163,7 @@ const ProfileStack = ({navigation}) => (
       name="settings"
       component={settings}
       options={{
-        headerTitle: 'Time Table',
+        headerTitle: 'Settings',
         headerBackTitleVisible: false,
         headerTitleAlign: 'center',
         tabBarVisible:'false',
@@ -175,10 +175,10 @@ const ProfileStack = ({navigation}) => (
       }}
     />
     <Stack.Screen
-      name="Time Table"
+      name="TimeTable"
       component={TimeTablecomp}
       options={{
-        headerTitle: 'Settings',
+        headerTitle: 'Time Table',
         headerBackTitleVisible: false,
         headerTitleAlign: 'center',
         tabBarVisible:'false',
@@ -191,6 +191,8 @@ const ProfileStack = ({navigation}) => (
     />
   </Stack.Navigator>
 );
+
+
 
 // const getaccounttype = async() => {
 //   await firestore()
