@@ -17,6 +17,7 @@ import Reminder from "../screen/Reminder";
 import { AuthContext } from "../navigation/AuthProvider";
 import ReminderS from "../screen/ReminderS";
 import settings from "../screen/settings";
+import TimeTablecomp from "../screen/TimeTablecomp";
 
 
 
@@ -173,8 +174,25 @@ const ProfileStack = ({navigation}) => (
         },
       }}
     />
+    <Stack.Screen
+      name="TimeTable"
+      component={TimeTablecomp}
+      options={{
+        headerTitle: 'Time Table',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
   </Stack.Navigator>
 );
+
+
 
 // const getaccounttype = async() => {
 //   await firestore()

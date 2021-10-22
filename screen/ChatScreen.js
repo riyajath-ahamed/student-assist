@@ -13,7 +13,12 @@ import firestore from '@react-native-firebase/firestore';
 const ChatScreen = () => {
   const [userData, setUserData] = useState(null);
   const [sub1,setSub1] = useState();
+  const [sub1lec,setSub1lec] = useState();
+  const [sub1clz,setSub1clz] = useState();
+
   const [sub2,setSub2] = useState();
+  const [sub2lec,setSub2lec] = useState();
+  const [sub2clz,setSub2clz] = useState();
 
   const getUser = async() => {
     const currentUser = await firestore()
@@ -25,7 +30,11 @@ const ChatScreen = () => {
         // console.log('User Data', documentSnapshot.data().sub1);
         // console.log('User Data', documentSnapshot.data().sub2);
         setSub1(documentSnapshot.data().sub1);
+        setSub1lec(documentSnapshot.data().sub1lec);
+        setSub1clz(documentSnapshot.data().sub1clz);
         setSub2(documentSnapshot.data().sub2);
+        setSub2lec(documentSnapshot.data().sub2lec);
+        setSub2clz(documentSnapshot.data().sub2clz);
       }
     })
   }
@@ -42,15 +51,16 @@ return (
   <UserInfo>
     <UserInfoText>
     <UserName>{sub1}</UserName>
-    <PostText>Lect. Amal Perera</PostText>
-    <ProgressBar
+    <PostText>Lect. {sub1lec}</PostText>
+    {/* <ProgressBar
     style={styles1.ProgressBar}
           styleAttr="Horizontal"
           indeterminate={false}
           progress={0.5}
           color="#4CD964"
         
-        />
+        /> */}
+      <Text style={styles1.Text}>{sub1clz}</Text>
         <TableTime>8.15 AM - 11.15 AM</TableTime>
 
     </UserInfoText>
@@ -61,14 +71,14 @@ return (
   <UserInfo>
     <UserInfoText>
     <UserName>Interval</UserName>
-    <ProgressBar
+    {/* <ProgressBar
     style={styles1.ProgressBar}
           styleAttr="Horizontal"
           indeterminate={false}
           progress={0}
           color="#4CD964"
         
-        />
+        /> */}
     </UserInfoText>
   </UserInfo>
 
@@ -77,16 +87,17 @@ return (
   <UserInfo>
     <UserInfoText>
     <UserName>{sub2}</UserName>
-    <PostText>Lect. Ama Shakya</PostText>
-    <ProgressBar
+    <PostText>Lect. {sub2lec}</PostText>
+    {/* <ProgressBar
     style={styles1.ProgressBar}
           styleAttr="Horizontal"
           indeterminate={false}
           progress={0.7}
           color="#4CD964"
         
-        />
-        <TableTime>8.15 AM - 11.15 AM</TableTime>
+        /> */}
+        <Text style={styles1.Text}>{sub2clz}</Text>
+        <TableTime>11.30 AM - 1.15 PM</TableTime>
 
     </UserInfoText>
   </UserInfo>
@@ -123,7 +134,16 @@ export default ChatScreen;
 const styles1 = StyleSheet.create({
   ProgressBar: {
     width: 300,
-  }
+  },
+
+  Text: {
+    fontFamily: 'Kufam-SemiBoldItalic' ,
+    fontSize: 20,
+    marginBottom: 10,
+    color: '#fff',
+  },
+
+
 
 
 })

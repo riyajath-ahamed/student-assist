@@ -87,8 +87,7 @@ const EditProfileScreen = () => {
           );
     
           setTransferred(
-            Math.round(taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) *
-              100,
+            Math.round(taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) * 100,
           );
         });
     
@@ -344,6 +343,7 @@ const EditProfileScreen = () => {
                 height: 20,
               }}
               />
+            
           <TextInput
             placeholder="Department"
             placeholderTextColor="#666666"

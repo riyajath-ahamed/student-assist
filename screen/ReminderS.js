@@ -1,18 +1,239 @@
-import React, {useState} from "react";
-import {View,Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, Pressable, Switch } from "react-native";
+import React, {useState, useEffect} from "react";
+import {View,Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, Pressable, Switch, Alert } from "react-native";
 import * as AddCalendarEvent from 'react-native-add-calendar-event';
 
 import { Card, Container, DayText, UserInfo, UserName,TableTime, UserInfoText, PostText, Card1 } from "../styles/reminder";
 import FormInput from "../asset/components/Forminput";
 import { Root, Popup } from 'popup-ui';
+import firestore from '@react-native-firebase/firestore';
+import ToggleSwitch from 'toggle-switch-react-native'
 
 const ReminderS = () => {
     const [modalVisible, setModalVisible] = useState(false);
     const [userData, setUserData] = useState(null);
+    const [place,setPlace] = useState("");
+    const [stat, setStat]= useState();
+    const [open11,setOpen11] = useState();
 
-    const [isEnabled, setIsEnabled] = useState(false);
-    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
+    const [publication,setPublication] = useState();
+    const [canteen,setCanteen] = useState();
+    const [gym,setGym] = useState();
+    const [miroom,setMiroom] = useState();
+
+    useEffect(() => {
+      getUser();
+      slide();
+      pub();
+      cant();
+      gymm();
+      mirm();
+    }, []);
+
+
+    const updatetime = async() => {
+      firestore()
+      .collection('reminder')
+      .doc(place)
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          return doc.ref.update({ open1: !doc.data().open1});
+        } else {
+          // Throw an error
+        }
+      })
+      .then((documentSnapshot) => {
+        
+        console.log('Status Updated!');
+        console.log('User Data ',);
+        console.log();
+        Alert.alert(
+          'Status Updated!'
+        );
+        setModalVisible(!modalVisible);
+        
+      })
+      .catch(error => console.log(error))
+    }
+
+
+    const getUser = async() => {
+
+      // const currentUser0 = firestore()
+      //   .collection('reminder')
+      //   .doc('publication')
+      //   .get()
+      //   .then((documentSnapshot) => {
+      //       if( documentSnapshot.exists ) {
+      //       console.log('User Data 00', documentSnapshot.data().open1);
+      //       // console.log('User Data', documentSnapshot.data().sub2);
+      //       setPublication(documentSnapshot.data().open1);
+            
+    
+      //       }
+      //    })
+      // .catch(error => console.log(error));
+      
+      // const currentUser1 = firestore()
+      //   .collection('reminder')
+      //   .doc('canteen')
+      //   .get()
+      //   .then((documentSnapshot) => {
+      //       if( documentSnapshot.exists ) {
+      //       console.log('User Data 00', documentSnapshot.data().open1);
+      //       // console.log('User Data', documentSnapshot.data().sub2);
+      //       setCanteen(documentSnapshot.data().open1);
+            
+    
+      //       }
+      //    })
+      // .catch(error => console.log(error));
+      
+
+      // const currentUser2 = firestore()
+      //   .collection('reminder')
+      //   .doc('gym')
+      //   .get()
+      //   .then((documentSnapshot) => {
+      //       if( documentSnapshot.exists ) {
+      //       console.log('User Data 00', documentSnapshot.data().open1);
+      //       // console.log('User Data', documentSnapshot.data().sub2);
+      //       setCanteen(documentSnapshot.data().open1);
+            
+    
+      //       }
+      //    })
+      // .catch(error => console.log(error));
+      
+
+      // const currentUser3 = firestore()
+      //   .collection('reminder')
+      //   .doc('miroom')
+      //   .get()
+      //   .then((documentSnapshot) => {
+      //       if( documentSnapshot.exists ) {
+      //       console.log('User Data 00', documentSnapshot.data().open1);
+      //       // console.log('User Data', documentSnapshot.data().sub2);
+      //       setCanteen(documentSnapshot.data().open1);
+            
+    
+      //       }
+      //    })
+      // .catch(error => console.log(error));
+    }
+    // useEffect(() => {
+    //   getUser();
+    // }, []);
+    function slide(){
+      
+      const currentUser5 = firestore()
+      .collection('reminder')
+      .doc(place)
+      .get()
+      .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {
+          console.log('User Data 00', documentSnapshot.data().open1);
+          // console.log('User Data', documentSnapshot.data().sub2);
+          setOpen11(documentSnapshot.data().open1);
+          }
+       })
+
+
+    }
+
+
+    function pub(){
+      const currentUser0 = firestore()
+        .collection('reminder')
+        .doc('publication')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setPublication(documentSnapshot.data().open1);
+            
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+      if(publication === true){
+          return require('../asset/Icon/open.png')
+      }else if (publication === false){
+          return require('../asset/Icon/close.png')
+        }
+    };
+
+    function cant(){
+      const currentUser1 = firestore()
+      .collection('reminder')
+      .doc('canteen')
+      .get()
+      .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {
+          console.log('User Data 00', documentSnapshot.data().open1);
+          // console.log('User Data', documentSnapshot.data().sub2);
+          setCanteen(documentSnapshot.data().open1);
+          
+  
+          }
+       })
+    .catch(error => console.log(error));
+
+      if(canteen === true){
+          return require('../asset/Icon/open.png')
+      }else if (canteen === false){
+          return require('../asset/Icon/close.png')
+        }
+    };
+
+    
+    function gymm(){
+      const currentUser2 = firestore()
+        .collection('reminder')
+        .doc('gym')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setGym(documentSnapshot.data().open1);
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+
+      if(gym === true){
+          return require('../asset/Icon/open.png')
+      }else if (gym === false){
+          return require('../asset/Icon/close.png')
+        }
+    };
+
+    function mirm(){
+      const currentUser3 = firestore()
+        .collection('reminder')
+        .doc('miroom')
+        .get()
+        .then((documentSnapshot) => {
+            if( documentSnapshot.exists ) {
+            console.log('User Data 00', documentSnapshot.data().open1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setMiroom(documentSnapshot.data().open1);
+            
+    
+            }
+         })
+      .catch(error => console.log(error));
+      if(miroom === true){
+          return require('../asset/Icon/open.png')
+      }else if (miroom === false){
+          return require('../asset/Icon/close.png')
+        }
+    };
 
     
 return (
@@ -28,27 +249,32 @@ return (
       >
         <View style={styles1.centeredView}>
           <View style={styles1.modalView}>
-            <DayText>Publication</DayText>
-            <Switch
+            <DayText>{place}</DayText>
+            {/* <Switch
                 trackColor={{ false: "#767577", true: "#7F3DFF" }}
                 thumbColor={isEnabled ? "#4CD964" : "#FF3939"}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
                 value={isEnabled}
+            /> */}
+            <ToggleSwitch
+              isOn={open11}
+              onColor="#4CD964"
+              offColor="#FF3939"
+              label="Set The Status"
+              labelStyle={{ color: "black", fontWeight: "900" }}
+              size="large"
+              onToggle={() => {updatetime(); getUser()}}
             />
+
 
             <Pressable
               style={[styles1.button, styles1.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
             >
-              <Text style={styles1.textStyle}>Cancel</Text>
+              <Text style={styles1.textStyle}>Back</Text>
             </Pressable>
-            <Pressable
-              style={[styles1.button, styles1.buttonSave]}
-              onPress={() => {setModalVisible(!modalVisible); updatetime()}}
-            >
-              <Text style={styles1.textStyle}> Save </Text>
-            </Pressable>
+            
           </View>
         </View>
       </Modal>
@@ -59,10 +285,8 @@ return (
         style={styles1.cardleft}
         >
             <TouchableOpacity
-             onPress={() => {setModalVisible(true); } }
-        
+             onPress={() => {setModalVisible(true); setPlace('publication'); pub() ; slide();} }
         >
-            
             <UserInfo>
                 <UserName
                 >
@@ -80,9 +304,7 @@ return (
               }}
               />
 
-            
-
-            <Image source={require('../asset/Icon/close.png')}
+            <Image source={pub()}
                             resizeMode="contain"
                             
                             style={{
@@ -99,7 +321,9 @@ return (
         <Card 
         style={styles1.card2}
         >
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {setModalVisible(true); setPlace('canteen'); cant(); slide();} }
+            >
             <UserInfo>
                 <UserName>
                     Canteen
@@ -116,7 +340,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/open.png')}
+            <Image source={cant()}
                             resizeMode="contain"
                             
                             style={{
@@ -133,7 +357,9 @@ return (
         <Card 
         style={styles1.card3}
         >
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {setModalVisible(true); setPlace('gym'); gymm(); slide();} }
+            >
             <UserInfo>
                 <UserName>
                     Gym
@@ -150,7 +376,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/open.png')}
+            <Image source={gymm()}
                             resizeMode="contain"
                             
                             style={{
@@ -165,7 +391,9 @@ return (
         <Card 
         style={styles1.card4}
         >
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {setModalVisible(true); setPlace('miroom'); mirm(); slide();} }
+            >
             <UserInfo>
                 <UserName>
                     MI Room
@@ -182,7 +410,7 @@ return (
               }}
               />
 
-            <Image source={require('../asset/Icon/close.png')}
+            <Image source={mirm()}
                             resizeMode="contain"
                             
                             style={{
@@ -193,56 +421,7 @@ return (
                             />
             </TouchableOpacity>
         </Card>
-        <Card1>
-        <UserInfo>
-            <UserInfoText>
-            <UserName>Rotaract Meeting</UserName>
-            <PostText>27th August</PostText>
-                <TableTime>6.00PM - 8.00 PM</TableTime>
-                <TouchableOpacity
-                
-                >
-                <Image source={require('../asset/Icon/adddd.png')}
-                            resizeMode="contain"
-                            
-                            style={{
-                                width: 100,
-                                height: 100,
-                                marginLeft: 270,
-                                marginTop: -90
-                            }}
-                            />
-                </TouchableOpacity>
-
-
-            </UserInfoText>
-        </UserInfo>
-
-</Card1>
-
-<Card1>
-        <UserInfo>
-            <UserInfoText>
-            <UserName>Rotaract Meeting</UserName>
-            <PostText>27th August</PostText>
-                <TableTime>6.00PM - 8.00 PM</TableTime>
-                <TouchableOpacity>
-                <Image source={require('../asset/Icon/adddd.png')}
-                            resizeMode="contain"
-                            
-                            style={{
-                                width: 100,
-                                height: 100,
-                                marginLeft: 270,
-                                marginTop: -90
-                            }}
-                            />
-                </TouchableOpacity>
-
-            </UserInfoText>
-        </UserInfo>
-
-</Card1>
+       
 
     </Container>
     </ScrollView>
@@ -297,8 +476,7 @@ const styles1 = StyleSheet.create({
         backgroundColor: "#F194FF",
       },
       buttonClose: {
-        marginRight: 170,
-        marginBottom:-40,
+        
         backgroundColor: "#2196F3",
       },
       buttonSave: {

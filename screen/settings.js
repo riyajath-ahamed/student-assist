@@ -16,7 +16,28 @@ const settings = () => {
 
 return (
     <View>
+        {/* <Card>
+         <UserInfo>    
+        <TouchableOpacity onPress={() => { navigation.navigate(TimeTablecomp);}}>
+          <Image source={require('../asset/Icon/calendar.png')}
+                            resizeMode="contain"
+                            
+                            style={{
+                                width: 30,
+                                height: 30,
+                                marginLeft: 10,
+                                marginTop: 0,
+                            }}
+                            />
+                            <UserInfoText>
+                                <UserName> </UserName>
+
+                            </UserInfoText> 
+          </TouchableOpacity>
+          </UserInfo>
+         </Card> */}
          <Card>
+
             <TouchableOpacity>
             <UserInfo>
 

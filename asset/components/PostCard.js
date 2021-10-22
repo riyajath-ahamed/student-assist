@@ -74,14 +74,14 @@ const PostCard = ({item, onDelete, onPress}) => {
                 {item.postImg != null ? <PostImg source={{uri: item.postImg}}/> : <Divider/>}
                 
                 <InteractionWrapper>
-                    <Interaction active  ={item.liked} >
+                    {/* <Interaction active  ={item.liked} >
                         <Image source={likeIcon} resizeMode="contain" style={{ width: 20, height: 20,}}/>
                         <InteractionText active = {item.liked}>{likeText}</InteractionText>
                     </Interaction>
                     <Interaction>
                         <Image source={require('../../asset/Icon/comment.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
                         <InteractionText>{commentText}</InteractionText>
-                    </Interaction>
+                    </Interaction> */}
 
                     {user.uid == item.userId ? (
                     <Interaction onPress={() => onDelete(item.id)}>

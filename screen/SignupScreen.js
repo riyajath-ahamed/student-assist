@@ -45,7 +45,7 @@ const SignupScreen=({navigation}) =>{
             <FormInput 
             labelValue={email}
             onChangeText={(userEmail)=>setEmail(userEmail)}
-            placeholderText="Email"
+            placeholderText="Email *"
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect={false}
@@ -64,7 +64,7 @@ const SignupScreen=({navigation}) =>{
           style={styles1.picker} 
           >
 
-          <Picker.Item label="Account Type" value="disabled" color="#aaa" />
+          <Picker.Item label="Account Type *" value="disabled" color="#aaa" />
           <Picker.Item itemindex="1" label="Staff" value="staff" />
           <Picker.Item itemindex="3" label="Club" value="student" />
           <Picker.Item itemindex="2" label="Student" value="student" />
@@ -91,7 +91,7 @@ const SignupScreen=({navigation}) =>{
             <FormInput 
             labelValue={password}
             onChangeText={(userPassword)=>setPassword(userPassword)}
-            placeholderText="Password"
+            placeholderText="Password *"
             secureTextEntry={true}
             />
             
@@ -100,7 +100,7 @@ const SignupScreen=({navigation}) =>{
             <FormInput 
             labelValue={confirmpassword}
             onChangeText={(userPassword)=>setconfirmPassword(userPassword)}
-            placeholderText="Confirm Password"
+            placeholderText="Confirm Password *"
             secureTextEntry={true}
             /> 
             
@@ -119,7 +119,7 @@ const SignupScreen=({navigation}) =>{
             onPress={() => register(email, password, account, fname, lname)}
             /> 
 
-            <Text>   </Text>
+            <Text style={styles1.Text1}>* - Require to fill  </Text>
 
             <FormButton1
             buttonTitle="Have an Account" 
@@ -149,6 +149,13 @@ const styles1 = StyleSheet.create({
       fontSize: 28,
       marginBottom: 10,
       color: '#051d5f',
+    },
+
+    Text1: {
+      fontFamily: 'Kufam-SemiBoldItalic' ,
+      fontSize: 15,
+      marginBottom: 10,
+      color: 'red',
     },
     
     navButton: {

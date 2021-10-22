@@ -21,6 +21,13 @@ const Loginscreen=({navigation}) =>{
   const {login} = useContext(AuthContext);
   const test=email;
 
+  function comp(){
+    if (email && password == null){
+      return Alert.alert('Enter your Email and Password')
+    }
+
+  }
+
     return(
         <View style={styles1.container}>
           <Image
@@ -59,22 +66,23 @@ const Loginscreen=({navigation}) =>{
               <Text style={styles1.errorMsg}>Enter A Valid Password</Text>
             }     
 
-            
+          
             <FormButton
             disabled= {false}
             buttonTitle="Sign In"
-            onPress={() => login(email, password)}
+            onPress={() => {comp(); login(email, password); }}
             />
+             
           
         
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
             style={styles1.forgotButton}
             onPress={()=> {}}>
               <Text style={styles1.navButtonText}>
                 Forgot Password?
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity
             style={styles1.forgotButton}
@@ -98,6 +106,7 @@ export default Loginscreen;
 
 const styles1 = StyleSheet.create({
     container: {
+      color:'#fff',
       justifyContent: 'center',
       alignItems: 'center',
       padding: 20,
