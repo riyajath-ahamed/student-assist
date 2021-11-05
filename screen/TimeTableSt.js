@@ -23,7 +23,7 @@ const TimeTableSt = ({navigation, route}) => {
   const [userData, setUserData] = useState(null);
   const [timetablepro, setTimetablepro] = useState(); 
 
-  
+  var sampleTimetable=[]
 
   const getTable = async() => {
   const currentUser = firestore()

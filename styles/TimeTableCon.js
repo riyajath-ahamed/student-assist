@@ -15,6 +15,14 @@ export const Card = styled.View`
     
 `;
 
+export const Card1 = styled.View`
+    background-color: #7F3DFF;
+    width: 60px;
+    margin-bottom: 20px;
+    border-radius: 20px;             
+    
+`;
+
 export const UserInfo = styled.View`
     flex-direction: row;
     justify-content: flex-start;

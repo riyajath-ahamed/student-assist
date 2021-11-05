@@ -1,13 +1,14 @@
 import React, {useState, useContext, useEffect} from "react";
-import {View,Text, StyleSheet, TouchableOpacity, Image} from "react-native";
+import {View,Text, StyleSheet, TouchableOpacity, Image, Modal, Pressable} from "react-native";
 import {ProgressBar} from '@react-native-community/progress-bar-android';
 
 import {Picker} from '@react-native-picker/picker';
 import { AuthContext } from "../../navigation/AuthProvider";
-import { Card, Container, DayText, PostText, TableTime, UserInfo, UserInfoText, UserName } from "../styles/TimeTableCon";
+import { Card, Card1, Container, DayText, PostText, TableTime, UserInfo, UserInfoText, UserName } from "../styles/TimeTableCon";
 
 import moment from "moment";
 import firestore from '@react-native-firebase/firestore';
+import KeyboardAvoidingWrapper from '../asset/components/KeyboardAvoidingWrapper';
 
 
 const ChatScreen = () => {
@@ -15,6 +16,7 @@ const ChatScreen = () => {
   const [sub1,setSub1] = useState();
   const [sub1lec,setSub1lec] = useState();
   const [sub1clz,setSub1clz] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
 
   const [sub2,setSub2] = useState();
   const [sub2lec,setSub2lec] = useState();
@@ -43,6 +45,38 @@ const ChatScreen = () => {
   }, []);
 return (
 <Container>
+<View>
+<Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Window has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <KeyboardAvoidingWrapper>
+        <View style={styles1.centeredView}>
+          <View style={styles1.modalView}>
+            
+            
+            <Text>Subject 1</Text>
+            
+          <Text>Subject 2</Text>
+          
+
+            <Pressable
+              style={[styles1.button, styles1.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles1.textStyle}>Cancel</Text>
+            </Pressable>
+           
+          </View>
+        </View>
+        </KeyboardAvoidingWrapper>
+      </Modal>
+      </View>
 <View>
   
   <DayText>Happy {moment().format('dddd')}</DayText>
@@ -103,24 +137,24 @@ return (
   </UserInfo>
 
 </Card>
-<Card>
+<Card1>
 <TouchableOpacity
-
+onPress={() => {setModalVisible(true); } }
 >
   {/* <Text>Complete Time-Table </Text> */}
 <Image
-                      source={require('../screen/Icons/transactiontimetable.png')}
+                      source={require('../screen/Icons/transactiontimetable1.png')}
                       
                       resizeMode="contain"
                       style={{
-                        width: 30,
-                        height: 30,
+                        width: 60,
+                        height: 60,
                         
                         
                       }}
                       />
 </TouchableOpacity>
-</Card>
+</Card1>
 </View>
 </Container>
 
@@ -141,6 +175,69 @@ const styles1 = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     color: '#fff',
+  },
+
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    marginRight: 170,
+    marginBottom:-40,
+    backgroundColor: "#2196F3",
+  },
+  buttonSave: {
+    marginRight: -200,
+    backgroundColor: "#bce954",
+  },
+  textStyle: {
+    fontSize:15,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  textInput: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : -12,
+    paddingLeft: 10,
+    color: '#333333',
+  },
+  action: {
+    flexDirection: 'row',
+    marginTop: 10,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f2f2f2',
+    paddingBottom: 5,
   },
 
 
