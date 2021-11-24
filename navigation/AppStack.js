@@ -235,7 +235,7 @@ const AppStack=() => {
     .catch(error => console.log(error))
     
   }
-
+// User Changing Screens 
   if(accounttyp == 'student'){
     accounts = Reminder
   }else{

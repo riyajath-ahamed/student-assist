@@ -41,6 +41,8 @@ export const PostTime = styled.Text`
     font-size: 12px;
     font-family: 'Lato-Regular';
     color: #666;
+    
+
 `; 
 export const PostText = styled.Text`
     font-size: 14px;

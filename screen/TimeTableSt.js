@@ -231,7 +231,7 @@ return (
 </Card>
 </View>
 </Container>
-<Text>{timetablepro}</Text>
+{/* <Text>{timetablepro}</Text> */}
 </ScrollView>
 
 
