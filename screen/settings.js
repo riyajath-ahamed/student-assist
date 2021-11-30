@@ -1,44 +1,30 @@
 import React, {useState, useContext} from "react";
 import {View,Text, StyleSheet, TouchableOpacity,  ScrollView, Image } from "react-native";
+import { set } from "react-native-reanimated";
+import Carousel from "react-native-snap-carousel";
 
 
 
 import { AuthContext } from "../../navigation/AuthProvider";
 import { Card, UserInfo, UserInfoText, UserName } from "../styles/settingss";
+import aboutCampus from "./aboutCampus";
+import { sliderData } from "./modal/data";
 
 
 
 
 
 
-const settings = () => {
+const settings = ({navigation, route}) => {
 
 
 return (
     <View>
-        {/* <Card>
-         <UserInfo>    
-        <TouchableOpacity onPress={() => { navigation.navigate(TimeTablecomp);}}>
-          <Image source={require('../asset/Icon/calendar.png')}
-                            resizeMode="contain"
-                            
-                            style={{
-                                width: 30,
-                                height: 30,
-                                marginLeft: 10,
-                                marginTop: 0,
-                            }}
-                            />
-                            <UserInfoText>
-                                <UserName> </UserName>
-
-                            </UserInfoText> 
-          </TouchableOpacity>
-          </UserInfo>
-         </Card> */}
+        
          <Card>
 
-            <TouchableOpacity>
+            <TouchableOpacity 
+            onPress={() => { navigation.navigate('About Campus');}} >
             <UserInfo>
 
             <Image source={require('../asset/Icon/campus.png')}
@@ -60,7 +46,9 @@ return (
         </Card>
 
         <Card>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => { navigation.navigate('Report a Problem');}}
+            >
             <UserInfo>
 
             <Image source={require('../asset/Icon/problem.png')}
@@ -81,7 +69,9 @@ return (
             </TouchableOpacity>
         </Card>
         <Card>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => { navigation.navigate('About us');}}
+            >
             <UserInfo>
 
             <Image source={require('../asset/Icon/adtus.png')}
@@ -101,6 +91,8 @@ return (
                             </UserInfo>
             </TouchableOpacity>
         </Card>
+        
+
         
     </View>
  

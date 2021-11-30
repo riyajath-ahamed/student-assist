@@ -18,6 +18,9 @@ import { AuthContext } from "../navigation/AuthProvider";
 import ReminderS from "../screen/ReminderS";
 import settings from "../screen/settings";
 import TimeTablecomp from "../screen/TimeTablecomp";
+import aboutCampus from "../screen/aboutCampus";
+import ReportaProb from "../screen/ReportaProb";
+import aboutus from "../screen/aboutus";
 
 
 
@@ -171,14 +174,46 @@ const ProfileStack = ({navigation}) => (
           backgroundColor: '#fff',
           shadowColor: '#fff',
           elevation: 0,
+
+        },
+       
+      }}
+    />
+    <Stack.Screen
+      name="About Campus"
+      component={aboutCampus}
+      options={{
+        headerTitle: 'About Campus',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
         },
       }}
     />
     <Stack.Screen
-      name="TimeTable"
-      component={TimeTablecomp}
+      name="Report a Problem"
+      component={ReportaProb}
       options={{
-        headerTitle: 'Time Table',
+        headerTitle: 'Report a Problem',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+    <Stack.Screen
+      name="About us"
+      component={aboutus}
+      options={{
+        headerTitle: 'About us',
         headerBackTitleVisible: false,
         headerTitleAlign: 'center',
         tabBarVisible:'false',
@@ -192,6 +227,90 @@ const ProfileStack = ({navigation}) => (
   </Stack.Navigator>
 );
 
+const settingStack = ({navigation}) => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="setting1"
+      component={settings}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name="About Campus"
+      component={aboutCampus}
+      options={{
+        headerTitle: 'About Campus',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+    <Stack.Screen
+      name="Report a Problem"
+      component={ReportaProb}
+      options={{
+        headerTitle: 'Report a Problem',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+    <Stack.Screen
+      name="About us"
+      component={aboutus}
+      options={{
+        headerTitle: 'About us',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        tabBarVisible:'false',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+  </Stack.Navigator>
+);
+
+// const timetbl = ({navigation}) => (
+//   <Stack.Navigator>
+//     <Stack.Screen
+//       name="Profiles"
+//       component={ChatScreen}
+//       options={{
+//         headerShown: false,
+//       }}
+//     />
+//     <Stack.Screen
+//       name="Comptimetable"
+//       component={TimeTablecomp}
+//       options={{
+//         headerTitle: 'Complete time Table',
+//         headerBackTitleVisible: false,
+//         headerTitleAlign: 'center',
+//         tabBarVisible:'false',
+//         headerStyle: {
+//           backgroundColor: '#fff',
+//           shadowColor: '#fff',
+//           elevation: 0,
+//         },
+//       }}
+//     />
+    
+//   </Stack.Navigator>
+// );
 
 
 // const getaccounttype = async() => {

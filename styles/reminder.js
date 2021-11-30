@@ -57,6 +57,13 @@ export const  DayText= styled.Text`
     padding-bottom: 15px;
     color: #7F3DFF;
 `;
+export const  DayText1= styled.Text`
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Lato-Regular'
+    padding-bottom: 15px;
+    color: #7F3DFF;
+`;
 
 export const TableTime = styled.Text`
     font-size: 12px;

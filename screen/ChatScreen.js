@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from "react";
-import {View,Text, StyleSheet, TouchableOpacity, Image, Modal, Pressable} from "react-native";
+import {View,Text, StyleSheet, TouchableOpacity, Image, Modal, Pressable, ScrollView} from "react-native";
 import {ProgressBar} from '@react-native-community/progress-bar-android';
 
 import {Picker} from '@react-native-picker/picker';
@@ -9,9 +9,14 @@ import { Card, Card1, Container, DayText, PostText, TableTime, UserInfo, UserInf
 import moment from "moment";
 import firestore from '@react-native-firebase/firestore';
 import KeyboardAvoidingWrapper from '../asset/components/KeyboardAvoidingWrapper';
+import TimeTablecomp from "./TimeTablecomp";
+import { Divider } from "../styles/FeedStyles";
+import { DayText1 } from "../styles/reminder";
+import { quote } from "./modal/data";
 
 
-const ChatScreen = () => {
+
+const ChatScreen = () => { 
   const [userData, setUserData] = useState(null);
   const [sub1,setSub1] = useState();
   const [sub1lec,setSub1lec] = useState();
@@ -39,11 +44,17 @@ const ChatScreen = () => {
         setSub2clz(documentSnapshot.data().sub2clz);
       }
     })
-  }
+  };
+  var randomq = quote[Math.floor(Math.random()*quote.length)]; 
+
   useEffect(() => {
     getUser();
   }, []);
+
+  
+
 return (
+  <ScrollView>
 <Container>
 <View>
 <Modal
@@ -80,6 +91,7 @@ return (
 <View>
   
   <DayText>Happy {moment().format('dddd')}</DayText>
+  <Text style={styles1.Text2} >" {randomq} "</Text>
 
 <Card>
   <UserInfo>
@@ -137,26 +149,87 @@ return (
   </UserInfo>
 
 </Card>
-<Card1>
-<TouchableOpacity
-onPress={() => {setModalVisible(true); } }
->
-  {/* <Text>Complete Time-Table </Text> */}
-<Image
-                      source={require('../screen/Icons/transactiontimetable1.png')}
-                      
-                      resizeMode="contain"
-                      style={{
-                        width: 60,
-                        height: 60,
-                        
-                        
-                      }}
-                      />
-</TouchableOpacity>
-</Card1>
+<Divider/>
+<DayText1> Complete Time-Table</DayText1>
+          <Card1 
+          // style={styles1.cardleft}
+          >
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Monday
+            </UserName>
+            <Text></Text>
+            <PostText> Programming</PostText>
+            <PostText> OS</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+          <Card1 style={styles1.card2}>
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Monday
+            </UserName>
+            <Text></Text>
+            <PostText> Programming</PostText>
+            <PostText> OS</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+
+          <Card1 
+          // style={styles1.card3}
+          >
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Monday
+            </UserName>
+            <Text></Text>
+            <PostText> Programming</PostText>
+            <PostText> OS</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+
+          <Card1 style={styles1.card4}>
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Monday
+            </UserName>
+            <Text></Text>
+            <PostText> Programming</PostText>
+            <PostText> OS</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+          <Card1 
+          // style={styles1.card3}
+          >
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Monday
+            </UserName>
+            <Text></Text>
+            <PostText> Programming</PostText>
+            <PostText> OS</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+          <Text> </Text>
+          <Text> </Text>
+          <Text> </Text>
+          
 </View>
+<View>
+
+</View>
+
 </Container>
+</ScrollView>
 
 
 
@@ -175,6 +248,14 @@ const styles1 = StyleSheet.create({
     fontSize: 20,
     marginBottom: 10,
     color: '#fff',
+  },
+  Text2: {
+    fontFamily: 'Alegreya-Italic' ,
+    fontSize: 20,
+    fontStyle: 'italic',
+    //
+    marginBottom: 10,
+    color: '#626',
   },
 
   centeredView: {
@@ -238,6 +319,20 @@ const styles1 = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#f2f2f2',
     paddingBottom: 5,
+  },
+  cardleft:{
+    marginRight: 210,
+  },
+  card2:{
+      marginLeft: 180,
+      marginTop: -175,
+  },
+  card3:{
+      marginRight: 210,
+  },
+  card4:{
+      marginLeft: 180,
+      marginTop: -175,
   },
 
 

@@ -149,7 +149,7 @@ return (
                 <UserName
                 
                 >
-                    Publication 1
+                    Publication
                 </UserName>
                 
             </UserInfo>
@@ -209,7 +209,7 @@ return (
         >
             <UserInfo>
                 <UserName>
-                    Gym
+                Gymnasium
                 </UserName>
                 
             </UserInfo>
