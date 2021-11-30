@@ -64,6 +64,7 @@ const PostCard = ({item, onDelete, onPress}) => {
                       <TouchableOpacity onPress={onPress}>
                         <UserName>{userData ? userData.fname || 'Test' : 'Test'} {userData ? userData.lname || 'User' : 'User'}</UserName>
                       </TouchableOpacity>
+                      
                         {/* <PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime> */}
                         <PostTime>{userData ? userData.accounttyp || 'Account Not Specified' : ''}{"\t"}</PostTime>
                     </UserInfoText>
@@ -77,12 +78,24 @@ const PostCard = ({item, onDelete, onPress}) => {
                 <InteractionWrapper>
                     
                      <PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime>
+                     
                     {user.uid == item.userId ? (
                     <Interaction onPress={() => onDelete(item.id)}>
                         <Image source={require('../../asset/Icon/bin.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
                         <InteractionText>{}</InteractionText>
                     </Interaction>
-                    ) : null }
+                    ) :<TouchableOpacity onPress={() =>{}}>
+                    <Image source={require('../../screen/Icons/menu.png')}
+                                      resizeMode="contain"
+                                      
+                                      style={{
+                                          width: 20,
+                                          height: 20,
+                                          marginLeft: 'auto',
+                                          marginTop: 0,
+                                      }}
+                                      />
+                    </TouchableOpacity>}
                 </InteractionWrapper>
             </Card>
     );

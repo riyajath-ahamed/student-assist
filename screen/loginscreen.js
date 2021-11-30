@@ -18,6 +18,9 @@ const Loginscreen=({navigation}) =>{
   const[password,setPassword]=useState();
   const[emailError,setemailError]=useState();
 
+if(emailError){
+  Alert.alert('Email is required');
+}
   const {login} = useContext(AuthContext);
   const test=email;
 

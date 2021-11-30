@@ -218,8 +218,13 @@ const HomeScreen =({navigation}) => {
             showsVerticalScrollIndicator={false}
             
             />
+            <View>
+            <Text></Text>
             
+        
+            </View>
         </Container>
+      
     );
 }
 

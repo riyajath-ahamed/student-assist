@@ -60,7 +60,7 @@ const EditProfileScreen = () => {
             'Your profile has been updated successfully.'
           );
         })
-      }
+      } 
 
       const uploadImage = async () => {
         if( image == null ) {
@@ -334,7 +334,7 @@ const EditProfileScreen = () => {
           />
         </View>
 
-
+        
         <View style={styles.action}>
         <Image source={require('../asset/Icon/department.png')}
             resizeMode="contain"
@@ -370,6 +370,8 @@ const EditProfileScreen = () => {
             style={styles.textInput}
           />
         </View>
+        
+        
         <FormButton buttonTitle="Update" onPress={handleUpdate} />
         <Text></Text>
         <Text></Text>

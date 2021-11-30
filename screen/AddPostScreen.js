@@ -50,6 +50,11 @@ const AddPostScreen = () => {
         const imageUrl = await uploadImage();
         console.log('Image Url: ', imageUrl);
 
+        if (post== "" || post== null) {
+            Alert.alert('Please write something');
+        }else{
+
+
 
 
         firestore()
@@ -73,6 +78,7 @@ const AddPostScreen = () => {
         .catch((error) => {
           console.log('Something went wrong with added post to firestore.', error);
         });
+      }
       }
 
 
