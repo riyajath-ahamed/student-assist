@@ -50,7 +50,7 @@ const AddPostScreen = () => {
         const imageUrl = await uploadImage();
         console.log('Image Url: ', imageUrl);
 
-        if (post== "" || post== null) {
+        if (post== "" || image == null) {
             Alert.alert('Please write something');
         }else{
 
@@ -66,6 +66,7 @@ const AddPostScreen = () => {
           postTime: firestore.Timestamp.fromDate(new Date()),
           likes: null,
           comments: null,
+          report: 0,
         })  
         .then(() => {
           console.log('Post Added!');

@@ -31,13 +31,51 @@ const EditProfileScreen = () => {
         })
       }
 
+      
+
       const handleUpdate = async() => {
+
+        if(userData.fname === null && userData.lname === null && userData.about === null && userData.index === null && userData.phone === null && userData.Department === null && userData.intake === null  ) {
+          Alert.alert("Plwase fill All the fields");
+        }else{
+
+          if(user.uid !== null){
+
         let imgUrl = await uploadImage();
     
         if( imgUrl == null && userData.userImg ) {
           imgUrl = userData.userImg;
         }
+        firestore()
+        .collection('users')
+        .doc(user.uid)
+        .set({
+          fname: userData.fname,
+          lname: userData.lname,
+          about: userData.about,
+          index: userData.index,
+
+          phone: userData.phone,
+          
+          Department: userData.Department,
+          Intake: userData.Intake,
+          userImg: imgUrl,
+        })
+        .then(() => {
+          console.log('User Updated!');
+          Alert.alert(
+            'Profile Updated!',
+            'Your profile has been updated successfully.'
+          );
+
+      })
+        
+      }else{
+        let imgUrl = await uploadImage();
     
+        if( imgUrl == null && userData.userImg ) {
+          imgUrl = userData.userImg;
+        }
         firestore()
         .collection('users')
         .doc(user.uid)
@@ -60,7 +98,11 @@ const EditProfileScreen = () => {
             'Your profile has been updated successfully.'
           );
         })
-      } 
+
+
+        
+     } 
+    } }
 
       const uploadImage = async () => {
         if( image == null ) {

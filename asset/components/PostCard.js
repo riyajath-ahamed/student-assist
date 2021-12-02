@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState}from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 
 import { Card, Container,  UserInfo, UserImg, UserName, UserInfoText, PostTime, PostText, PostImg, InteractionWrapper, Interaction, Divider, InteractionText } from "../../styles/FeedStyles";
 
@@ -47,6 +47,44 @@ const PostCard = ({item, onDelete, onPress}) => {
           }
         })
       }
+
+      // const reportPost = (postId) => {
+      //   Alert.alert(
+      //     'Report Post',
+      //     'Are you sure you want to report this post?',
+      //     [
+      //       {
+      //         text: 'Cancel',
+      //         onPress: () => console.log('Cancel Pressed'),
+      //         style: 'cancel',
+      //       },
+      //       {
+      //         text: 'Report',
+      //         onPress: () => {
+      //           console.log('Report Pressed');
+      //           firestore()
+      //             .collection('posts')
+      //             .doc(postId)
+      //             .update({
+                    
+      //             })  
+      //             .then(() => {
+      //               console.log('Post Added!');
+      //               Alert.alert(
+      //                 'Post published!',
+      //                 'Your post has been published Successfully!',
+      //               );
+      //               setPost(null);
+      //             })
+      //             .catch((error) => {
+      //               console.log('Something went wrong with added post to firestore.', error);
+      //             });
+      //         },
+      //       },
+      //     ],
+      //     {cancelable: false},
+      //   );
+      // }
     
       useEffect(() => {
         getUser();
@@ -84,18 +122,20 @@ const PostCard = ({item, onDelete, onPress}) => {
                         <Image source={require('../../asset/Icon/bin.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
                         <InteractionText>{}</InteractionText>
                     </Interaction>
-                    ) :<TouchableOpacity onPress={() =>{}}>
-                    <Image source={require('../../screen/Icons/menu.png')}
-                                      resizeMode="contain"
+                    ) :  null
+                    // <TouchableOpacity onPress={reportPost}>
+                    // <Image source={require('../../screen/Icons/menu.png')}
+                    //                   resizeMode="contain"
                                       
-                                      style={{
-                                          width: 20,
-                                          height: 20,
-                                          marginLeft: 'auto',
-                                          marginTop: 0,
-                                      }}
-                                      />
-                    </TouchableOpacity>}
+                    //                   style={{
+                    //                       width: 20,
+                    //                       height: 20,
+                    //                       marginLeft: 'auto',
+                    //                       marginTop: 0,
+                    //                   }}
+                    //                   />
+                    // </TouchableOpacity>
+                    }
                 </InteractionWrapper>
             </Card>
     );

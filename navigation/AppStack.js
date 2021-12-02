@@ -355,13 +355,13 @@ const AppStack=() => {
     
   }
 // User Changing Screens 
-  if(accounttyp == 'student' ||accounttyp == 'club'){
+  if(accounttyp == 'student'){
     accounts = Reminder
   }else{
     accounts = ReminderS
   }
 
-  if(accounttyp == 'student' ||accounttyp == 'club'){
+  if(accounttyp == 'student'){
     accounts2 = ChatScreen
   }else{
     accounts2 = TimeTableSt

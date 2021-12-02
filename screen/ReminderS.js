@@ -278,6 +278,8 @@ return (
           </View>
         </View>
       </Modal>
+
+      
     <Container>
         <DayText>Reminder</DayText>
         

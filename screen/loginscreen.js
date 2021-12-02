@@ -34,7 +34,7 @@ if(emailError){
     return(
         <View style={styles1.container}>
           <Image
-            source={require('../asset/img/Logo.jpeg')}
+            source={require('../asset/img/3.png')}
             style={styles1.logo}
               />
 
@@ -92,7 +92,7 @@ if(emailError){
             onPress={()=> navigation.navigate('Signup')}
             >
               <Text style={styles1.navButtonText}>
-                Dont have an account? Create here.
+                Don't have an account? Create here.
               </Text>
             </TouchableOpacity>
           

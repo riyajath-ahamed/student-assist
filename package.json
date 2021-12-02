@@ -38,6 +38,7 @@
     "react-native-linear-gradient": "^2.5.6",
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-pager-view": "^5.4.1",
+    "react-native-popup-menu": "^0.15.12",
     "react-native-reanimated": "^2.2.2",
     "react-native-safe-area-context": "^3.3.1",
     "react-native-screens": "^3.6.0",

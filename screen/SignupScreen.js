@@ -51,7 +51,7 @@ const SignupScreen=({navigation}) =>{
             autoCorrect={false}
             />
 
-          <Picker 
+          {/* <Picker 
           // itemStyle={{backgroundColor:'#fff'}}
           // placeholder="Account Type"
           labelValue={account}
@@ -65,10 +65,9 @@ const SignupScreen=({navigation}) =>{
           >
 
           <Picker.Item label="Account Type *" value="disabled" color="#aaa" />
-          {/* <Picker.Item itemindex="1" label="Staff" value="staff" /> */}
-          <Picker.Item itemindex="3" label="Club" value="club" />
+          
           <Picker.Item itemindex="2" label="Student" value="student" />
-          </Picker>
+          </Picker> */}
 
         {/* <Text style={styles1.Text}>  {account}</Text> */}
 

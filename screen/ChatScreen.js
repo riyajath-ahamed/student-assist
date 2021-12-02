@@ -135,6 +135,7 @@ const ChatScreen = () => {
 
   useEffect(() => {
     getUser();
+    
   }, []);
 
   

@@ -12,7 +12,9 @@ const ReportaProb = () => {
 
 return (
     <View>
-        <Text> Hello Prob</Text>
+        <Text></Text>
+        <Text style={styles1.header}>Contact Us</Text>
+        <Text></Text>
 
     </View>
  
@@ -23,6 +25,13 @@ return (
 export default ReportaProb;
 
 const styles1 = StyleSheet.create({
+    header: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color:"#7f5DF0",
+        marginLeft: 15,
+        textAlign: "center",
+    },
  
 
 
