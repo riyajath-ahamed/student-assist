@@ -355,13 +355,13 @@ const AppStack=() => {
     
   }
 // User Changing Screens 
-  if(accounttyp == 'student'){
+  if(accounttyp == 'student' ||accounttyp == 'club'){
     accounts = Reminder
   }else{
     accounts = ReminderS
   }
 
-  if(accounttyp == 'student'){
+  if(accounttyp == 'student' ||accounttyp == 'club'){
     accounts2 = ChatScreen
   }else{
     accounts2 = TimeTableSt
@@ -469,7 +469,7 @@ const AppStack=() => {
         
         />
         <tab.Screen
-            name='Reminder'
+            name='Status'
             component={accounts}
             options={{
                 tabBarIcon: ({focused}) => (

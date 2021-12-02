@@ -27,6 +27,22 @@ const ChatScreen = () => {
   const [sub2lec,setSub2lec] = useState();
   const [sub2clz,setSub2clz] = useState();
 
+
+  const[tue1,setTue1] = useState();
+  const[tue2,setTue2] = useState();
+
+  const[wed1,setWed1] = useState();
+  const[wed2,setWed2] = useState();
+
+  const[thu1,setThu1] = useState();
+  const[thu2,setThu2] = useState();
+
+  const[fri1,setFri1] = useState();
+  const[fri2,setFri2] = useState();
+
+  const[sat1,setSat1] = useState();
+  const[sat2,setSat2] = useState();
+
   const getUser = async() => {
     const currentUser = await firestore()
     .collection('timetable')
@@ -42,6 +58,76 @@ const ChatScreen = () => {
         setSub2(documentSnapshot.data().sub2);
         setSub2lec(documentSnapshot.data().sub2lec);
         setSub2clz(documentSnapshot.data().sub2clz);
+      }
+    })
+
+    const currentUser1 = await firestore()
+    .collection('timetable')
+    .doc('Tuesday')
+    .get()
+    .then((documentSnapshot) => {
+      if( documentSnapshot.exists ) {
+        // console.log('User Data', documentSnapshot.data().sub1);
+        // console.log('User Data', documentSnapshot.data().sub2);
+        setTue1(documentSnapshot.data().sub1);
+        setTue2(documentSnapshot.data().sub2);
+        
+      }
+    })
+
+    const currentUser2 = await firestore()
+    .collection('timetable')
+    .doc('Wednesday')
+    .get()
+    .then((documentSnapshot) => {
+      if( documentSnapshot.exists ) {
+        // console.log('User Data', documentSnapshot.data().sub1);
+        // console.log('User Data', documentSnapshot.data().sub2);
+        setWed1(documentSnapshot.data().sub1);
+        setWed2(documentSnapshot.data().sub2);
+        
+      }
+    })
+
+    const currentUser3 = await firestore()
+    .collection('timetable')
+    .doc('Thursday')
+    .get()
+    .then((documentSnapshot) => {
+      if( documentSnapshot.exists ) {``
+        // console.log('User Data', documentSnapshot.data().sub1);
+        // console.log('User Data', documentSnapshot.data().sub2);
+        setThu1(documentSnapshot.data().sub1);
+        setThu2(documentSnapshot.data().sub2);
+        
+      }
+    })
+
+    const currentUser4 = await firestore()
+    .collection('timetable')
+    .doc('Friday')
+    .get()
+    .then((documentSnapshot) => {
+      if( documentSnapshot.exists ) {
+        // console.log('User Data', documentSnapshot.data().sub1);
+        // console.log('User Data', documentSnapshot.data().sub2);
+        setFri1(documentSnapshot.data().sub1);
+        setFri2(documentSnapshot.data().sub2);
+        
+      }
+    })
+
+    const currentUser5 = await firestore()
+    .collection('timetable')
+    .doc('Saturday')
+    .get()
+    .then((documentSnapshot) => {
+      if( documentSnapshot.exists ) {
+        // console.log('User Data', documentSnapshot.data().sub1);
+        // console.log('User Data', documentSnapshot.data().sub2);
+        setSat1(documentSnapshot.data().sub1);
+        setSat2(documentSnapshot.data().sub2);
+        
       }
     })
   };
@@ -157,11 +243,11 @@ return (
           <UserInfo>
             <UserInfoText>
             <UserName>
-              Monday
+              Tuesday
             </UserName>
             <Text></Text>
-            <PostText> Programming</PostText>
-            <PostText> OS</PostText>
+            <PostText> {tue1}</PostText>
+            <PostText> {tue2}</PostText>
             </UserInfoText>
           </UserInfo>
           </Card1>
@@ -169,11 +255,11 @@ return (
           <UserInfo>
             <UserInfoText>
             <UserName>
-              Monday
+              Wednesday
             </UserName>
             <Text></Text>
-            <PostText> Programming</PostText>
-            <PostText> OS</PostText>
+            <PostText> {wed1}</PostText>
+            <PostText> {wed2}</PostText>
             </UserInfoText>
           </UserInfo>
           </Card1>
@@ -184,11 +270,11 @@ return (
           <UserInfo>
             <UserInfoText>
             <UserName>
-              Monday
+              Thursday
             </UserName>
             <Text></Text>
-            <PostText> Programming</PostText>
-            <PostText> OS</PostText>
+            <PostText> {thu1}</PostText>
+            <PostText> {thu2}</PostText>
             </UserInfoText>
           </UserInfo>
           </Card1>
@@ -197,11 +283,11 @@ return (
           <UserInfo>
             <UserInfoText>
             <UserName>
-              Monday
+              Friday
             </UserName>
             <Text></Text>
-            <PostText> Programming</PostText>
-            <PostText> OS</PostText>
+            <PostText> {fri1}</PostText>
+            <PostText> {fri2}</PostText>
             </UserInfoText>
           </UserInfo>
           </Card1>
@@ -211,11 +297,11 @@ return (
           <UserInfo>
             <UserInfoText>
             <UserName>
-              Monday
+              Saturday
             </UserName>
             <Text></Text>
-            <PostText> Programming</PostText>
-            <PostText> OS</PostText>
+            <PostText> {sat1}</PostText>
+            <PostText> {sat2}</PostText>
             </UserInfoText>
           </UserInfo>
           </Card1>

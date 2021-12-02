@@ -262,58 +262,7 @@ return (
                             }}
                             />
         </Card>
-        {/* <Card1>
-        <UserInfo>
-            <UserInfoText>
-            <UserName>Rotaract Meeting</UserName>
-            <PostText>27th August</PostText>
-                <TableTime>6.00PM - 8.00 PM</TableTime>
-                <TouchableOpacity
-                
-                >
-                <Image source={require('../asset/Icon/adddd.png')}
-                            resizeMode="contain"
-                            
-                            style={{
-                                width: 100,
-                                height: 100,
-                                marginLeft: 270,
-                                marginTop: -90
-                            }}
-                            />
-                </TouchableOpacity>
-
-
-            </UserInfoText>
-        </UserInfo>
-
-</Card1>
-<Card1>
-        <UserInfo>
-            <UserInfoText>
-            <UserName>Rotaract Meeting</UserName>
-            <PostText>27th August</PostText>
-                <TableTime>6.00PM - 8.00 PM</TableTime>
-                <TouchableOpacity
-                
-                >
-                <Image source={require('../asset/Icon/adddd.png')}
-                            resizeMode="contain"
-                            
-                            style={{
-                                width: 100,
-                                height: 100,
-                                marginLeft: 270,
-                                marginTop: -90
-                            }}
-                            />
-                </TouchableOpacity>
-
-
-            </UserInfoText>
-        </UserInfo>
-
-</Card1> */}
+        
 
     </Container>
     </ScrollView>
