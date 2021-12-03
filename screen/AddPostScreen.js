@@ -50,7 +50,7 @@ const AddPostScreen = () => {
         const imageUrl = await uploadImage();
         console.log('Image Url: ', imageUrl);
 
-        if (post== "" || image == null) {
+        if (post== "" || post == null) {
             Alert.alert('Please write something');
         }else{
 
