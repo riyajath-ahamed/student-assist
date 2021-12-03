@@ -171,7 +171,7 @@ return (
     <ActionButton buttonColor="#7F3DFF" offsetY={90}>
           <ActionButton.Item buttonColor='#9b59b6' title="Take Photo" onPress={takePhotoFromCamera}>
           <Image
-              source={require("/Programming/Student/screen/Icons/Fill5.png")}
+              source={require("../screen/Icons/Fill5.png")}
               resizeMode="contain"
               style={{
                 width: 30,
@@ -182,7 +182,7 @@ return (
           </ActionButton.Item>
           <ActionButton.Item buttonColor='#3498db' title="Choose Photo" onPress={choosePhotoFromLibrary}>
           <Image
-              source={require("/Programming/Student/screen/Icons/Fill4.png")}
+              source={require("../screen/Icons/Fill4.png")}
               resizeMode="contain"
               style={{
                 width: 30,
