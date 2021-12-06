@@ -24,7 +24,7 @@ const SignupScreen=({navigation}) =>{
 
   const { register } = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
-  const [account, setAccount] = useState();
+  const [account, setAccount] = "student";
   const [selectedValue, setSelectedValue] = useState();
 
 
@@ -35,6 +35,7 @@ const SignupScreen=({navigation}) =>{
   //       .update({
   //         accounttyp: userData.accounttyp,
   //       })
+  
     
 
     return(
