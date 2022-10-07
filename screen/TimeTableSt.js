@@ -4,12 +4,14 @@ import {ProgressBar} from '@react-native-community/progress-bar-android';
 
 import {Picker} from '@react-native-picker/picker';
 import { AuthContext } from "../../navigation/AuthProvider";
-import { Card, Container, DayText, PostText, TableTime, UserInfo, UserInfoText, UserName, UserName1 } from "../styles/TimeTableCon";
+import { Card, Container, DayText, PostText, TableTime, UserInfo, UserInfoText, UserName, UserName1, Card1, Divider} from "../styles/TimeTableCon";
+
 
 import moment from "moment";
 import FormInput from "../asset/components/Forminput";
 import firestore from '@react-native-firebase/firestore';
 import KeyboardAvoidingWrapper from '../asset/components/KeyboardAvoidingWrapper';
+import { DayText1 } from "../styles/reminder";
 
 import TimeTablecomp from "./TimeTablecomp";
 
@@ -23,7 +25,24 @@ const TimeTableSt = ({navigation, route}) => {
   const [userData, setUserData] = useState(null);
   const [timetablepro, setTimetablepro] = useState(); 
 
-  
+
+  const[tue1,setTue1] = useState();
+  const[tue2,setTue2] = useState();
+
+  const[wed1,setWed1] = useState();
+  const[wed2,setWed2] = useState();
+
+  const[thu1,setThu1] = useState();
+  const[thu2,setThu2] = useState();
+
+  const[fri1,setFri1] = useState();
+  const[fri2,setFri2] = useState();
+
+  const[sat1,setSat1] = useState();
+  const[sat2,setSat2] = useState();
+
+
+  var sampleTimetable=[]
 
   const getTable = async() => {
   const currentUser = firestore()
@@ -40,6 +59,76 @@ const TimeTableSt = ({navigation, route}) => {
             });
           })
         .catch(error => console.log(error));
+
+        const currentUser1 = await firestore()
+        .collection('timetable')
+        .doc('Tuesday')
+        .get()
+        .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {
+            // console.log('User Data', documentSnapshot.data().sub1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setTue1(documentSnapshot.data().sub1);
+            setTue2(documentSnapshot.data().sub2);
+            
+          }
+        })
+    
+        const currentUser2 = await firestore()
+        .collection('timetable')
+        .doc('Wednesday')
+        .get()
+        .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {
+            // console.log('User Data', documentSnapshot.data().sub1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setWed1(documentSnapshot.data().sub1);
+            setWed2(documentSnapshot.data().sub2);
+            
+          }
+        })
+    
+        const currentUser3 = await firestore()
+        .collection('timetable')
+        .doc('Thursday')
+        .get()
+        .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {``
+            // console.log('User Data', documentSnapshot.data().sub1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setThu1(documentSnapshot.data().sub1);
+            setThu2(documentSnapshot.data().sub2);
+            
+          }
+        })
+    
+        const currentUser4 = await firestore()
+        .collection('timetable')
+        .doc('Friday')
+        .get()
+        .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {
+            // console.log('User Data', documentSnapshot.data().sub1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setFri1(documentSnapshot.data().sub1);
+            setFri2(documentSnapshot.data().sub2);
+            
+          }
+        })
+    
+        const currentUser5 = await firestore()
+        .collection('timetable')
+        .doc('Saturday')
+        .get()
+        .then((documentSnapshot) => {
+          if( documentSnapshot.exists ) {
+            // console.log('User Data', documentSnapshot.data().sub1);
+            // console.log('User Data', documentSnapshot.data().sub2);
+            setSat1(documentSnapshot.data().sub1);
+            setSat2(documentSnapshot.data().sub2);
+            
+          }
+        })
   }
   useEffect(() => {
         getTable();
@@ -229,9 +318,83 @@ return (
                       
 </TouchableOpacity>
 </Card>
+<Divider/>
+<DayText1> Complete Time-Table</DayText1>
+          <Card1 
+          // style={styles1.cardleft}
+          >
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Tuesday
+            </UserName>
+            <Text></Text>
+            <PostText> {tue1}</PostText>
+            <PostText> {tue2}</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+          <Card1 style={styles1.card2}>
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Wednesday
+            </UserName>
+            <Text></Text>
+            <PostText> {wed1}</PostText>
+            <PostText> {wed2}</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+
+          <Card1 
+          // style={styles1.card3}
+          >
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Thursday
+            </UserName>
+            <Text></Text>
+            <PostText> {thu1}</PostText>
+            <PostText> {thu2}</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+
+          <Card1 style={styles1.card4}>
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Friday
+            </UserName>
+            <Text></Text>
+            <PostText> {fri1}</PostText>
+            <PostText> {fri2}</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+          <Card1 
+          // style={styles1.card3}
+          >
+          <UserInfo>
+            <UserInfoText>
+            <UserName>
+              Saturday
+            </UserName>
+            <Text></Text>
+            <PostText> {sat1}</PostText>
+            <PostText> {sat2}</PostText>
+            </UserInfoText>
+          </UserInfo>
+          </Card1>
+          <Text> </Text>
+          <Text> </Text>
+          <Text> </Text>
+          
 </View>
 </Container>
-<Text>{timetablepro}</Text>
+{/* <Text>{timetablepro}</Text> */}
 </ScrollView>
 
 
@@ -307,6 +470,20 @@ const styles1 = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#f2f2f2',
     paddingBottom: 5,
+  },
+  cardleft:{
+    marginRight: 210,
+  },
+  card2:{
+      marginLeft: 180,
+      marginTop: -175,
+  },
+  card3:{
+      marginRight: 210,
+  },
+  card4:{
+      marginLeft: 180,
+      marginTop: -175,
   },
 
 

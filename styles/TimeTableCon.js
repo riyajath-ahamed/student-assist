@@ -9,7 +9,15 @@ import styled from "styled-components";
 
 export const Card = styled.View`
     background-color: #7F3DFF;
-    width: 350px;
+    width: 360px;
+    margin-bottom: 20px;
+    border-radius: 20px;             
+    
+`;
+
+export const Card1 = styled.View`
+    background-color: #7F3DFF;
+    width: 165px;
     margin-bottom: 20px;
     border-radius: 20px;             
     

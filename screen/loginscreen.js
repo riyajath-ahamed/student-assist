@@ -18,6 +18,9 @@ const Loginscreen=({navigation}) =>{
   const[password,setPassword]=useState();
   const[emailError,setemailError]=useState();
 
+if(emailError){
+  Alert.alert('Email is required');
+}
   const {login} = useContext(AuthContext);
   const test=email;
 
@@ -31,7 +34,7 @@ const Loginscreen=({navigation}) =>{
     return(
         <View style={styles1.container}>
           <Image
-            source={require('../asset/img/Logo.jpeg')}
+            source={require('../asset/img/3.png')}
             style={styles1.logo}
               />
 
@@ -89,7 +92,7 @@ const Loginscreen=({navigation}) =>{
             onPress={()=> navigation.navigate('Signup')}
             >
               <Text style={styles1.navButtonText}>
-                Dont have an account? Create here.
+                Don't have an account? Create here.
               </Text>
             </TouchableOpacity>
           

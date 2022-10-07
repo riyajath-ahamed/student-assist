@@ -133,6 +133,8 @@ const HomeScreen =({navigation}) => {
   }, [deleted]);
 
 
+  
+
 
   const handleDelete = (postId) => {
     Alert.alert(
@@ -218,8 +220,13 @@ const HomeScreen =({navigation}) => {
             showsVerticalScrollIndicator={false}
             
             />
+            <View>
+            <Text></Text>
             
+        
+            </View>
         </Container>
+      
     );
 }
 

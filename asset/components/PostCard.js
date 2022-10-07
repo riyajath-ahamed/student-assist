@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState}from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 
 import { Card, Container,  UserInfo, UserImg, UserName, UserInfoText, PostTime, PostText, PostImg, InteractionWrapper, Interaction, Divider, InteractionText } from "../../styles/FeedStyles";
 
@@ -47,6 +47,44 @@ const PostCard = ({item, onDelete, onPress}) => {
           }
         })
       }
+
+      // const reportPost = (postId) => {
+      //   Alert.alert(
+      //     'Report Post',
+      //     'Are you sure you want to report this post?',
+      //     [
+      //       {
+      //         text: 'Cancel',
+      //         onPress: () => console.log('Cancel Pressed'),
+      //         style: 'cancel',
+      //       },
+      //       {
+      //         text: 'Report',
+      //         onPress: () => {
+      //           console.log('Report Pressed');
+      //           firestore()
+      //             .collection('posts')
+      //             .doc(postId)
+      //             .update({
+                    
+      //             })  
+      //             .then(() => {
+      //               console.log('Post Added!');
+      //               Alert.alert(
+      //                 'Post published!',
+      //                 'Your post has been published Successfully!',
+      //               );
+      //               setPost(null);
+      //             })
+      //             .catch((error) => {
+      //               console.log('Something went wrong with added post to firestore.', error);
+      //             });
+      //         },
+      //       },
+      //     ],
+      //     {cancelable: false},
+      //   );
+      // }
     
       useEffect(() => {
         getUser();
@@ -64,7 +102,9 @@ const PostCard = ({item, onDelete, onPress}) => {
                       <TouchableOpacity onPress={onPress}>
                         <UserName>{userData ? userData.fname || 'Test' : 'Test'} {userData ? userData.lname || 'User' : 'User'}</UserName>
                       </TouchableOpacity>
-                        <PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime>
+                      
+                        {/* <PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime> */}
+                        <PostTime>{userData ? userData.accounttyp || 'Account Not Specified' : ''}{"\t"}</PostTime>
                     </UserInfoText>
                 </UserInfo>
                 <PostText>
@@ -74,21 +114,28 @@ const PostCard = ({item, onDelete, onPress}) => {
                 {item.postImg != null ? <PostImg source={{uri: item.postImg}}/> : <Divider/>}
                 
                 <InteractionWrapper>
-                    {/* <Interaction active  ={item.liked} >
-                        <Image source={likeIcon} resizeMode="contain" style={{ width: 20, height: 20,}}/>
-                        <InteractionText active = {item.liked}>{likeText}</InteractionText>
-                    </Interaction>
-                    <Interaction>
-                        <Image source={require('../../asset/Icon/comment.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
-                        <InteractionText>{commentText}</InteractionText>
-                    </Interaction> */}
-
+                    
+                     <PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime>
+                     
                     {user.uid == item.userId ? (
                     <Interaction onPress={() => onDelete(item.id)}>
                         <Image source={require('../../asset/Icon/bin.png')} resizeMode="contain" style={{ width: 20, height: 20,}}/>
                         <InteractionText>{}</InteractionText>
                     </Interaction>
-                    ) : null }
+                    ) :  null
+                    // <TouchableOpacity onPress={reportPost}>
+                    // <Image source={require('../../screen/Icons/menu.png')}
+                    //                   resizeMode="contain"
+                                      
+                    //                   style={{
+                    //                       width: 20,
+                    //                       height: 20,
+                    //                       marginLeft: 'auto',
+                    //                       marginTop: 0,
+                    //                   }}
+                    //                   />
+                    // </TouchableOpacity>
+                    }
                 </InteractionWrapper>
             </Card>
     );

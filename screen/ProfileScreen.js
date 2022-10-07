@@ -156,6 +156,8 @@ const ProfileScreen =({navigation, route}) => {
         .catch((e) => console.log('Error deleting textt post.', e));
     };
 
+    
+
 
     return(
         <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -209,9 +211,10 @@ const ProfileScreen =({navigation, route}) => {
                     'https://firebasestorage.googleapis.com/v0/b/studentassistant-702c0.appspot.com/o/user.png?alt=media&token=b025c0fe-2481-4798-9577-3b8e689ff0e5'
                   : 'https://firebasestorage.googleapis.com/v0/b/studentassistant-702c0.appspot.com/o/user.png?alt=media&token=b025c0fe-2481-4798-9577-3b8e689ff0e5',}}
             />
-            <Text style={styles.userName}>{userData ? userData.fname || 'Test' : 'Test'} {userData ? userData.lname || 'User' : 'User'}</Text>
+            <Text style={styles.userName}>{userData ? userData.fname || 'Test' : 'Test'} {userData ? userData.lname || 'User' : 'User'} </Text>
             
             <Text style={styles.aboutUser}>
+            {userData ? userData.accounttyp || 'Account Not Specified' : ''}{"\t"}
             {userData ? userData.index || 'No Index added.' : ''}{"\n"}
               {userData ? userData.about || 'No details added.' : ''}
               </Text>

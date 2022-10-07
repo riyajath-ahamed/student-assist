@@ -24,7 +24,7 @@ const SignupScreen=({navigation}) =>{
 
   const { register } = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
-  const [account, setAccount] = useState();
+  const [account, setAccount] = "student";
   const [selectedValue, setSelectedValue] = useState();
 
 
@@ -35,6 +35,7 @@ const SignupScreen=({navigation}) =>{
   //       .update({
   //         accounttyp: userData.accounttyp,
   //       })
+  
     
 
     return(
@@ -51,7 +52,7 @@ const SignupScreen=({navigation}) =>{
             autoCorrect={false}
             />
 
-          <Picker 
+          {/* <Picker 
           // itemStyle={{backgroundColor:'#fff'}}
           // placeholder="Account Type"
           labelValue={account}
@@ -65,10 +66,9 @@ const SignupScreen=({navigation}) =>{
           >
 
           <Picker.Item label="Account Type *" value="disabled" color="#aaa" />
-          <Picker.Item itemindex="1" label="Staff" value="staff" />
-          <Picker.Item itemindex="3" label="Club" value="student" />
+          
           <Picker.Item itemindex="2" label="Student" value="student" />
-          </Picker>
+          </Picker> */}
 
         {/* <Text style={styles1.Text}>  {account}</Text> */}
 

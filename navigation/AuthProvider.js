@@ -58,8 +58,9 @@ export const AuthProvider=({children}) => {
                           //we need to catch the whole sign up process if it fails too.
                           .catch(error => {
                               console.log('Something went wrong with sign up: ', error);
+                              Alert.alert("Enter a Valid Email and Password! ");
                           })
-                        .catch(Alert.alert("Enter the correct Email and Password! "));
+                        
                     }catch(e){
                         alert("Enter a valid Email and Password.");
                     }

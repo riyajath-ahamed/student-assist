@@ -59,3 +59,16 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+node_modules/.package-lock.json
+node_modules/ua-parser-js/bower.json
+node_modules/ua-parser-js/package.js
+node_modules/ua-parser-js/package.json
+node_modules/ua-parser-js/readme.md
+node_modules/ua-parser-js/dist/ua-parser.min.js
+node_modules/ua-parser-js/dist/ua-parser.pack.js
+node_modules/ua-parser-js/src/ua-parser.js
+node_modules/ua-parser-js/test/browser-test.json
+node_modules/ua-parser-js/test/cpu-test.json
+node_modules/ua-parser-js/test/device-test.json
+node_modules/ua-parser-js/test/os-test.json
+node_modules/ua-parser-js/test/test.js

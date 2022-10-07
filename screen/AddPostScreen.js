@@ -50,6 +50,11 @@ const AddPostScreen = () => {
         const imageUrl = await uploadImage();
         console.log('Image Url: ', imageUrl);
 
+        if (post== "" || post == null) {
+            Alert.alert('Please write something');
+        }else{
+
+
 
 
         firestore()
@@ -61,6 +66,7 @@ const AddPostScreen = () => {
           postTime: firestore.Timestamp.fromDate(new Date()),
           likes: null,
           comments: null,
+          report: 0,
         })  
         .then(() => {
           console.log('Post Added!');
@@ -73,6 +79,7 @@ const AddPostScreen = () => {
         .catch((error) => {
           console.log('Something went wrong with added post to firestore.', error);
         });
+      }
       }
 
 
@@ -164,7 +171,7 @@ return (
     <ActionButton buttonColor="#7F3DFF" offsetY={90}>
           <ActionButton.Item buttonColor='#9b59b6' title="Take Photo" onPress={takePhotoFromCamera}>
           <Image
-              source={require("/Programming/Student/screen/Icons/Fill5.png")}
+              source={require("../screen/Icons/Fill5.png")}
               resizeMode="contain"
               style={{
                 width: 30,
@@ -175,7 +182,7 @@ return (
           </ActionButton.Item>
           <ActionButton.Item buttonColor='#3498db' title="Choose Photo" onPress={choosePhotoFromLibrary}>
           <Image
-              source={require("/Programming/Student/screen/Icons/Fill4.png")}
+              source={require("../screen/Icons/Fill4.png")}
               resizeMode="contain"
               style={{
                 width: 30,

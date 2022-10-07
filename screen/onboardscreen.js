@@ -6,10 +6,10 @@ import Onboarding from 'react-native-onboarding-swiper';
 
 const Done = ({...props}) => (
     <TouchableOpacity
-        style={{marginHorizontal:10}}
+        style={{marginHorizontal:20}}
         {...props}
     >
-        <Text style={{fontSize:16}}>DONE</Text>
+        <Text style={styles1.Text}>DONE</Text>
     </TouchableOpacity>
 );
 
@@ -22,7 +22,12 @@ const Done = ({...props}) => (
         pages={[
           {
             backgroundColor: '#7F3DFF',
-            image: <Image source={require('../asset/img/Launch Screen.png')} />,
+            image: <Image source={require('../asset/img/3.png')}  
+            style={{
+              height: 100,
+              width: 100,
+              
+            }}/>,
             title: 'Student Assist',
             subtitle: 'Your Tasking Partner',
           },
@@ -54,4 +59,8 @@ const Done = ({...props}) => (
          alignItems:'center',
          justifyContent: 'center',
      },
+     Text:{
+       color:'#fff',
+        fontSize:18,
+     }
  });
